@@ -76,7 +76,7 @@ h4 {
 */
 
 .navbar {
-    margin:0 0 15px;
+    margin:0px;
     
 }
 
@@ -146,8 +146,8 @@ h4 {
 */
 
 .highlight { 
-	margin-top: 40px;   
-    margin-bottom: 40px;
+	margin-top: 0px;   
+    margin-bottom: 0px;
     text-align:center;
 }
 

@@ -1,6 +1,7 @@
-<!---
-	This file is used to configure specific settings for the "production" environment.
-	A variable set in this file will override the one in "config/settings.cfm".
-	Example: <cfset set(errorEmailAddress="someone@somewhere.com")>
---->
+<!--- Mail settings --->
 <cfset set(errorEmailAddress="support@weekendboxclub.com")>
+<cfset set(errorEmailSubject="Error caught on Weekend Box")>
+<cfset set(sendEmailOnError=true)>
+
+<!--- Google Analytics Settings --->
+<cfset set(google.analytics.trackerId = "UA-40603633-1")>

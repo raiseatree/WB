@@ -1,4 +1,5 @@
 <cfoutput>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -17,9 +18,9 @@
 		<!--- Display any flash messages --->
 		<cfif NOT flashIsEmpty()>
 			<section class="container">
-				<div class="alert alert-success">
+				<div class="alert alert-<cfif flashKeyExists("success")>success<cfelseif flashKeyExists("error")>error</cfif>">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					#flash("success")#
+					<cfif flashKeyExists("success")>#flash("success")#<cfelseif flashKeyExists("error")>#flash("error")#</cfif>
 				</div>
 			</section>
 		</cfif>
@@ -30,7 +31,7 @@
 		            <div class="container">
 		                <ul class="nav">
 		                    <li class="active"><a href="##">Home</a></li>
-		                    <li>#linkTo(controller="main", action="about", text="About")#</li>
+		                    <!---<li>#linkTo(controller="main", action="about", text="About")#</li>--->
 		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
 		                </ul>
 		            </div>
@@ -45,20 +46,8 @@
 		<script src="./javascripts/jquery-1.8.0.min.js"></script>
 		<script src="./javascripts/bootstrap.js"></script>
 		
-		<!--  Google Analytics -->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-40603633-1']);
-			_gaq.push(['_setDomainName', 'weekendboxclub.com']);
-			_gaq.push(['_setAllowLinker', true]);
-			_gaq.push(['_trackPageview']);
-			
-			(function() {
-			  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
+		<!--- Include Google Analytics --->
+		#googleAnalyticsTag()#
 		
 		<!-- UserVoice JavaScript SDK (only needed once on a page) -->
 		<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='http://widget.uservoice.com/Ifme2BWSqMrgntr1C864A.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
