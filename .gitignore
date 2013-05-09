@@ -1,0 +1,26 @@
+# unpacked plugin folders
+plugins/**/*
+
+#WEB-INF classes folder
+WEB-INF/
+
+# Log files
+log/
+
+# Lib Dir
+lib/
+
+# files directory where uploads go
+files/
+
+# tests directory
+tests/
+
+# DBMigrate plugin: generated SQL
+db/sql
+
+# Other files and folders to ignore
+*.metadata
+*.log
+*.project
+*.DS_Store
