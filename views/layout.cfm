@@ -4,17 +4,34 @@
 	<head>
 		<meta charset="UTF-8">
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <title>Weekend Box - A Weekly Box of Healthy Living, Green &amp; Creative Activities for Children Aged 3-8 Delivered to Your Door</title>
+	    <title>Weekend Box - A Fortnightly Box of Healthy Living, Green &amp; Creative Activities for Children Aged 3-8 Delivered to Your Door</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    
-	    #stylesheetLinkTag('bootstrap,bootstrap-responsive,strip,strip-responsive')#
-	    
-	    
+	    #stylesheetLinkTag('bootstrap.min,bootstrap-responsive.min,strip,strip-responsive')#
 	   	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet">
 	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+	    
+	    <!--- Defined here so pages can use jQuery --->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	</head>
 	<body>
-	
+		
+		<section class="container">
+			<nav class="navbar">
+		        <div class="navbar-inner">
+		            <div class="container">
+						#linkTo(route="home", text=ImageTag(source='weekend-box-logo-sml.png', alt='Weekend Box'), class="brand")#
+		                <ul class="nav">
+		                    <li class="active">#linkTo(route="home", text="Home")#</li>
+		                    <li>#linkTo(controller="main", action="about", text="About")#</li>
+		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
+		                    <li>#linkTo(controller="main", action="faqs", text="FAQs")#</li>
+		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
+		                </ul>
+		            </div>
+		        </div>
+		    </nav>
+		</section>
+		
 		<!--- Display any flash messages --->
 		<cfif NOT flashIsEmpty()>
 			<section class="container">
@@ -26,25 +43,27 @@
 		</cfif>
 		
 		<section class="container">
-		    <nav class="navbar">
-		        <div class="navbar-inner">
-		            <div class="container">
-		                <ul class="nav">
-		                    <li class="active"><a href="##">Home</a></li>
-		                    <!---<li>#linkTo(controller="main", action="about", text="About")#</li>--->
-		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
-		                </ul>
-		            </div>
-		        </div>
-		    </nav>
-		</section>
-		
-		<section class="container">
 			#includeContent()#
 		</section>
+		
+		<footer class="container footer-box">   
+			
+			<hr class="shadow-line" />         
+			<nav class="links">             
+			    #linkTo(route="home", text="Home")#
+			    #linkTo(controller="main", action="home", text="About")#
+				<!---#linkTo(href="http://BLOG_URL_HERE", text="Blog")#--->
+				#linkTo(controller="main", action="faqs", text="FAQs")#
+				#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#                
+			</nav>  
+			<nav class="links">   
+			    <a href="http://www.twitter.com/weekendboxclub">#imageTag(source='twitter-icon.png', alt="twitter")#</a>
+				<a href="http://www.facebook.com/weekendboxclub">#imageTag(source='facebook-icon.png', alt="facebook")#</a>   
+			</nav>                 
+			
+		</footer>
 				
-		<script src="./javascripts/jquery-1.8.0.min.js"></script>
-		<script src="./javascripts/bootstrap.js"></script>
+		#javascriptIncludeTag('bootstrap.min')#
 		
 		<!--- Include Google Analytics --->
 		#googleAnalyticsTag()#
@@ -67,6 +86,12 @@
 		  tab_inverted: false
 		}]);
 		</script>
+		
+		<!--- Add This --->
+		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : false};</script>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js##pubid=ra-518d665a23c7538c"></script>
+		
+					
 		
 	</body>
 </html>
