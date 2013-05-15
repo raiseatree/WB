@@ -21,10 +21,12 @@
 		            <div class="container">
 						#linkTo(route="home", text=ImageTag(source='weekend-box-logo-sml.png', alt='Weekend Box'), class="brand")#
 		                <ul class="nav">
-		                    <li class="active">#linkTo(route="home", text="Home")#</li>
+		                    <li>#linkTo(route="home", text="Home")#</li>
 		                    <li>#linkTo(controller="main", action="about", text="About")#</li>
 		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
 		                    <li>#linkTo(controller="main", action="faqs", text="FAQs")#</li>
+		                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
+		                    <li class="active">#linkTo(controller="main", action="order", text="Join The Club!")#</li>
 		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
 		                </ul>
 		            </div>
@@ -54,7 +56,8 @@
 			    #linkTo(controller="main", action="home", text="About")#
 				<!---#linkTo(href="http://BLOG_URL_HERE", text="Blog")#--->
 				#linkTo(controller="main", action="faqs", text="FAQs")#
-				#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#                
+				#linkTo(controller="main", action="order", text="Join The Club!", class="active")#           
+				#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")# 
 			</nav>  
 			<nav class="links">   
 			    <a href="http://www.twitter.com/weekendboxclub">#imageTag(source='twitter-icon.png', alt="twitter")#</a>
@@ -88,7 +91,7 @@
 		</script>
 		
 		<!--- Add This --->
-		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : false};</script>
+		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : true};</script>
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js##pubid=ra-518d665a23c7538c"></script>
 		
 					

@@ -20,5 +20,5 @@
 
 	<h5>How do I cancel my subscription?</h5>
 	<p>Oh no! We're really sad you want to leave but if you're sure, just send an email to #mailto('hello@weekendboxclub.com')# and we'll take care of the rest.</p>
-
+	
 </cfoutput>

@@ -13,8 +13,7 @@
 				<p><strong>Email:</strong><br />#mailto('hello@weekendboxclub.com')#</p>
 			</div>
 			
-			<h4>All Sorted?</h4>
-			<p>#linkTo(controller="main", action="order", text="Order Now &raquo;", role="button", class="big-btn")#</p>
+			#includePartial('cta')#
 			
 		</div>
 		
@@ -28,6 +27,8 @@
 				<p><strong>Email:</strong><br />#mailto('hello@weekendboxclub.com')#</p>
 			</div>
 			
+			#includePartial('cta')#
+		
 		</div>
 		
 	</div>

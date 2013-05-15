@@ -2,7 +2,7 @@
 <cfoutput>
 
 	<div class="row">        	
-		<h2>Order Your <strong>Weekend Box</strong></h2>
+		<h2>Join The <strong>Weekend Box</strong> Club</h2>
 	</div>
 
 	<section class="section-box shadow form">

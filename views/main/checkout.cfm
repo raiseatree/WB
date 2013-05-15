@@ -6,7 +6,7 @@
 		<h2>Weekend Box Payment</h2>
 		<h3>Please fill in your billing details below so we can send you your first box!</h3>
 		
-		<div class="span4">
+		<aside class="span4">
 			
 			<h4>Delivery Address</h4>
 			<p><strong>#data.customer.name#</strong><br />#data.customer.address#<br /><cfif data.customer.address2 GT ''>#data.customer.address2#<br /></cfif>#data.customer.city#<br />#data.customer.postcode#</p>
@@ -26,9 +26,9 @@
 				#includePartial('faqs')#
 			</div>
 		
-		</div>
+		</aside>
 		
-		<div class="span8">
+		<section class="span8">
 			
 			<div class="tabbable">
 				<ul class="nav nav-tabs">
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 			
-		</div>
+		</section>
 		
 	</div>
 
