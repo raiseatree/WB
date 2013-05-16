@@ -72,7 +72,7 @@
 				<h4 id="andy">Andy Stephenson <small>Weekend Box's Founder: Avid Photographer, Intrepid Explorer &amp; Average Squash Player</small></h4>
 				#imageTag(source='andy-stephenson.jpg', class="img-circle pull-right")#
 				<div class="span5">
-					<p>Hi! I'm Andy and I founded Weekend Box after looking for gift ideas for my four nieces and nephews: nothing seemed to embody the mix of healthy living, green and creative content that I feel is so important to child development so I decided to quit his job and launch Weekend Box. </p>
+					<p>Hi! I'm Andy and I founded Weekend Box after looking for gift ideas for my four nieces and nephews: nothing seemed to embody the mix of healthy living, green and creative content that I feel is so important to child development so I decided to quit my job and launch Weekend Box. </p>
 					<p>When I'm not dreaming up crazy and creative things to send in the Weekend Boxes, you'll probably find me <strong>taking photos</strong> (animals and landscapes are my favourite - together or separately!), <strong>exploring nature</strong> (camping in March, anyone?) or <strong>playing squash</strong> (averagely)!</p>
 					<p>I'd love to hear what you think about Weekend Box - please do feel free to get in touch either with comments, suggestions or just to say Hi; I'd love to hear from you:</p>
 					<p><i class="icon-envelope"></i> #mailTo(emailAddress='andy@weekendboxclub.com', encode=true)#</p>
