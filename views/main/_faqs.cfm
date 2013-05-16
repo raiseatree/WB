@@ -9,7 +9,7 @@
 	<h5>Which day of the week will my box arrive on?</h5>
 	<p>We post all boxes out using Royal Mail Second Class on Mondays. You should definitely receive your box by Friday but in exceptional circumstances it may arrive on Saturday morning.</p>
 	
-	<h5>When will I charged?</h5>
+	<h5>When will I be charged?</h5>
 	<p>We only charge you when we post your box each fortnight (on the Monday). Sometimes it can take a day or so to show on your bank statement.</p>
 	
 	<h5>Can I add multiple children?</h5>
