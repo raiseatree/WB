@@ -69,7 +69,7 @@
 			<hr>
 			
 			<div class="clearfix">
-				<h4 id="andy">Andy Stephenson <small>Weekend Box's Founder: Avid Photographer, BLAH &amp; average Squash Player</small></h4>
+				<h4 id="andy">Andy Stephenson <small>Weekend Box's Founder: Avid Photographer, Intrepid Explorer &amp; Average Squash Player</small></h4>
 				#imageTag(source='andy-stephenson.jpg', class="img-circle pull-right")#
 				<div class="span5">
 					<p>Hi! I'm Andy and I founded Weekend Box after looking for gift ideas for my four nieces and nephews: nothing seemed to embody the mix of healthy living, green and creative content that I feel is so important to child development so I decided to quit his job and launch Weekend Box. </p>
