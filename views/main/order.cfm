@@ -1,4 +1,5 @@
 <cfparam name="data">
+<cfparam name="params.plan" default="fortnightly">
 <cfoutput>
 
 	<div class="row">        	
@@ -156,6 +157,7 @@
 	
 				<div class="form-block">
 					#hiddenField(objectName="data.customer", property="promocodeID")#
+					#hiddenFieldTag(name="customer[planname]", value=params.plan)#
 					<button type="submit" class="big-btn">Join The Club &raquo;</button>
 					<p><i>(We'll take your payment details on the next screen and let you review everything before completing)</i></p>
 				</div>

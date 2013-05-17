@@ -10,6 +10,13 @@
 	   	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet">
 	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
 	    
+	    <!--- Plans Styles --->
+	    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+		<!--[if IE]>
+			<link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	    
 	    <!--- Defined here so pages can use jQuery --->
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	</head>

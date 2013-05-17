@@ -1,22 +1,69 @@
 <cfcomponent extends="Controller" output="false">
 
 	<cffunction name="calcStartDate" access="private">
+		<cfargument name="planname" />
 		
-		<!--- Work out the start date so we have a buffer for ordering box contents --->
-		<cfset dow = DayOfWeek(now())>
+		<cfswitch expression="#ARGUMENTS.planName#">
 		
-		<cfif dow LT 2>
-			<!--- If Sunday, push order to a week Monday --->
-			<cfset startInc = 8>
-		<cfelseif dow LTE 4>
-			<!--- Monday - Wednesday (inc) we can accept for first box following week --->
-			<cfset startInc = (7 - dow) + 2>
-		<cfelse>
-			<!--- Thursday - Saturday (inc) push order to a week Monday --->
-			<cfset startInc = (7 - dow) + 9>						
-		</cfif>
+			<cfcase value="one-off">
+			
+				<!--- ASAP - use day+2 --->
+				<cfreturn DateFormat(DateAdd("d", 2, now()), 'yyyy-mm-dd')>
+			
+			</cfcase>
 		
-		<cfreturn DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
+			<cfcase value="fortnightly">
+		
+				<!--- Work out the start date so we have a buffer for ordering box contents --->
+				<cfset dow = DayOfWeek(now())>
+				
+				<cfif dow LT 2>
+					<!--- If Sunday, push order to a week Monday --->
+					<cfset startInc = 8>
+				<cfelseif dow LTE 4>
+					<!--- Monday - Wednesday (inc) we can accept for first box following week --->
+					<cfset startInc = (7 - dow) + 2>
+				<cfelse>
+					<!--- Thursday - Saturday (inc) push order to a week Monday --->
+					<cfset startInc = (7 - dow) + 9>						
+				</cfif>
+				
+				<cfreturn DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
+			
+			</cfcase>
+			
+			<cfcase value="monthly">
+			
+				<!--- Work out the day of the month so we can work out if we can ship out boxes this month --->
+				<cfset dom = DateFormat(now(),"dd")>
+				
+				<!--- If GTE than 15 we delay until next month --->
+				<cfif dom GTE 15>
+					<!--- Set start date to be first of next month --->
+					<cfset startDate = CreateDate(year(DateAdd("m",1,now())), month(DateAdd("m",1,now())), 1)>
+				<cfelse>
+					<!--- Set the start date to be the next available Monday --->
+					<cfset dow = DayOfWeek(now())>
+				
+					<cfif dow LT 2>
+						<!--- If Sunday, push order to a week Monday --->
+						<cfset startInc = 8>
+					<cfelseif dow LTE 4>
+						<!--- Monday - Wednesday (inc) we can accept for first box following week --->
+						<cfset startInc = (7 - dow) + 2>
+					<cfelse>
+						<!--- Thursday - Saturday (inc) push order to a week Monday --->
+						<cfset startInc = (7 - dow) + 9>						
+					</cfif>
+					
+					<cfset startDate = DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
+				</cfif>
+				
+				<cfreturn DateFormat(startDate, 'yyyy-mm-dd')>
+				
+			</cfcase>
+			
+		</cfswitch>
 		
 	</cffunction>
 
@@ -32,6 +79,8 @@
 				
 				<!--- Check if the promo code is active and update the customer --->
 				<cfset data.promoCodeID = loc.promo.ID>
+				
+				<!--- Store the promo code in the session for reference --->
 				
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your promo code #UCase(params.promoCode)# was not found, please check for typos and try again")>
@@ -92,6 +141,8 @@
 	
 	<cffunction name="checkout">
 		
+		<cfparam name="data.directdebit" default="true">
+		
 		<cfif IsDefined("SESSION.customerID")>
 		
 			<!--- Decrypt the customer ID --->
@@ -109,19 +160,41 @@
 				<cfset loc.timestamp = '#DateFormat(now(),"yyyy-mm-dd")# #TimeFormat(now(),"HH:MM:SS")#'>
 				
 				<!--- Subscription vars --->
-				<cfset data.payment.start_at = calcStartDate()>
+				<cfset data.payment.start_at = calcStartDate(data.customer.planname)>
+
+				<cfswitch expression="#data.customer.planname#">
+					<cfcase value="one-off">
+						<!--- Disable Direct Debit --->
+						<cfset data.directDebit = false>
+					</cfcase>
+					<cfcase value="monthly">
+						<cfset data.plan_interval = 'month'>
+						<cfset data.plan_interval_frequency = 1>
+						<cfset data.plan_amount = 15>
+					</cfcase>
+					<cfdefaultcase>
+						<cfset data.plan_interval = 'week'>
+						<cfset data.plan_interval_frequency = 2>
+						<cfset data.plan_amount = 8>
+					</cfdefaultcase>
+				</cfswitch>
 				
-				<!--- Bodge together our variables (Inc USER DATA) --->
-				<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=8&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=2&subscription%5Binterval_unit%5D=week&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#data.payment.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+				<!--- Check if we can use Direct Debit --->
+				<cfif data.directDebit EQ true>
+				
+					<!--- Bodge together our variables (Inc USER DATA) --->
+					<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#data.payment.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+						
+					<!--- Encrypt the signature --->
+					<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
 					
-				<!--- Encrypt the signature --->
-				<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
-				
-				<cfsavecontent variable="httpURL">
-					<cfoutput>#Trim(GetGoCardless('gc_url'))#/connect/subscriptions/new?#sigTemp#&signature=#signature#</cfoutput>
-				</cfsavecontent>
-				
-				<cfset data.payment.url = httpURL>
+					<cfsavecontent variable="httpURL">
+						<cfoutput>#Trim(GetGoCardless('gc_url'))#/connect/subscriptions/new?#sigTemp#&signature=#signature#</cfoutput>
+					</cfsavecontent>
+					
+					<cfset data.payment.url = httpURL>
+					
+				</cfif>
 
 			<cfelse>
 				<cfset redirectTo(route="home")>
@@ -262,6 +335,12 @@
 				<cfset params.customer.referral = params.customer.referralLocation>
 			</cfif>
 			
+			<!--- Check the plan name --->
+			<cfif ListContains("one-off,fortnightly,monthly", params.customer.planname) EQ 0>
+				<cfset flashInsert(error='Sorry - the plan you selected was not found, please try again')>
+				<cfset redirectTo(controller="main", action="plans")>
+			</cfif>
+			
 			<cfset data.customer = model("customer").create(params.customer)>
 			
 			<cfif data.customer.hasErrors()>
@@ -286,26 +365,6 @@
 			</cfif>
 		
 		</cfif>
-		
-	</cffunction>
-	
-	<cffunction name="send">
-	
-		<!--- Check the captcha --->
-		<cfif IsDefined("params.captcha") AND params.captcha EQ 8>
-			<!--- Add in to the db --->
-			<cfset addUser = model("preregister").create(params)>
-			
-			<cfif addUser.hasErrors()>
-				<cfdump var="#addUser.allErrors()#"><cfabort>
-			<cfelse>
-				<cfset flashInsert(success="Thanks for registering your interest - we'll keep you posted and email you a coupon for your first box when we're ready to launch!")>
-			</cfif>
-		<cfelse>
-			<cfset flashInsert(error="Sorry - you entered the Anti-Robot question incorrectly, please try registering again.")>
-		</cfif>
-
-		<cfset redirectTo(back=true)>
 		
 	</cffunction>
 

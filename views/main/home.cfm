@@ -12,7 +12,7 @@
 			<div class="row product-splash">
 				<div class="span5">
 					#imageTag(source='product-facts.png')#
-					<p>#linkTo(controller="main", action="order", text="Get Started Now &raquo;", role="button", class="big-btn register")#</p>
+					<p>#linkTo(controller="main", action="plans", text="Get Started Now &raquo;", role="button", class="big-btn register")#</p>
 					<p class="text-center">
 						<a href="##giftCode" role="button" data-toggle="modal">Promo/Gift Code? Enter it here!</a>
 						<div class="addthis_toolbox addthis_default_style offset1">
