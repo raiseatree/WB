@@ -33,7 +33,7 @@
 		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
 		                    <li>#linkTo(controller="main", action="faqs", text="FAQs")#</li>
 		                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
-		                    <li class="active">#linkTo(controller="main", action="order", text="Join The Club!")#</li>
+		                    <li class="active">#linkTo(controller="main", action="plans", text="Join The Club!")#</li>
 		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
 		                </ul>
 		            </div>
@@ -63,7 +63,7 @@
 			    #linkTo(controller="main", action="home", text="About")#
 				<!---#linkTo(href="http://BLOG_URL_HERE", text="Blog")#--->
 				#linkTo(controller="main", action="faqs", text="FAQs")#
-				#linkTo(controller="main", action="order", text="Join The Club!", class="active")#           
+				#linkTo(controller="main", action="plans", text="Join The Club!", class="active")#           
 				#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")# 
 			</nav>  
 			<nav class="links">   
