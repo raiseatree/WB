@@ -12,9 +12,9 @@
 			<div class="row product-splash">
 				<div class="span5">
 					#imageTag(source='product-facts.png')#
+					<p class="text-center"><a href="##giftCode" role="button" data-toggle="modal">Promo/Gift Code? Enter it here!</a></p>
 					<p>#linkTo(controller="main", action="plans", text="Get Started Now &raquo;", role="button", class="big-btn register")#</p>
 					<p class="text-center">
-						<a href="##giftCode" role="button" data-toggle="modal">Promo/Gift Code? Enter it here!</a>
 						<div class="addthis_toolbox addthis_default_style offset1">
 							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 							<a class="addthis_button_tweet"></a>
@@ -102,29 +102,6 @@
     </div>
 </section>--->
                
-	<!-- Gift Code Modal -->
-	<div id="giftCode" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		#startFormTag(controller="main", action="plans", method="post")#
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Enter Gift/Promotional Code</h3>
-			</div>
-			<div class="modal-body">
-				<p>Enter your gift code below and we'll get your account set up straight away!</p>		
-				<div class="span3">
-					<fieldset>
-						<label><strong>Gift/Promotional Code</strong></label>
-						<input type="text" name="promoCode" placeholder="Enter your gift/promo code here!" class="input-large">
-					</fieldset>
-				</div>
-				<div class="span2">
-					#imageTag('squirrel.png')#
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">Get Started &raquo;</button>
-			</div>
-		#endFormTag()#
-	</div>
+	#includePartial('giftcode')#
 
 </cfoutput>
