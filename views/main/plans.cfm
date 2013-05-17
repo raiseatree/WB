@@ -16,8 +16,9 @@
 					<div class="plans text-center">
 						<div class="span3">
 							<h5 class="plan-name">One-Off</h5>
-							<h1 class="plan-price">&pound10</h1>
+							<h1 class="plan-price"><cfif IsDefined("data.promoAmount") AND data.promoAmount GT ''><strike>&pound;10</strike> <span class="control-group success"><span class="help-inline">&pound;#data.promoAmount#</span></span><cfelse>&pound;10</cfif></h1>
 							<span class="muted">per box</span>
+							<cfif IsDefined("data.promoAmount") AND data.promoAmount GT ''><div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div></cfif>
 			
 							<ul class="unstyled plan-features">
 								<li>4 Activities</li>
@@ -34,6 +35,7 @@
 			
 							<h1 class="plan-price">&pound;8</h1>
 							<span class="muted">per fortnight</span>
+							<cfif IsDefined("data.promoAmount") AND data.promoAmount GT ''><div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div></cfif>
 			
 							<ul class="unstyled plan-features">
 								<li><strong>FREE Wall Planner</strong></li>
@@ -51,7 +53,8 @@
 							
 							<h1 class="plan-price">&pound;15</h1>
 							<span class="muted">per month</span>
-			
+							<cfif IsDefined("data.promoAmount") AND data.promoAmount GT ''><div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div></cfif>
+				
 							<ul class="unstyled plan-features">
 								<li>2 Boxes</li>
 								<li>4 Activities</li>
