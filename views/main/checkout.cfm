@@ -68,7 +68,7 @@
 							<p><strong>Please Note:</strong> The merchant's name will be displayed as '<strong>RAISE A TREE LTD</strong>'. Click the button below to set up your subscription:</p>
 		
 							<!--- Check if we have a custom (PROMO) PayPal Code --->
-							<cfif IsDefined("data.customer.code")>
+							<cfif IsDefined("data.customer.code") AND data.customer.code GT ''>
 								
 								<cfif data.customer.planName EQ 'one-off'>
 									#data.customer.paypaloneoff#
