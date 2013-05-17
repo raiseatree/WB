@@ -104,7 +104,7 @@
                
 	<!-- Gift Code Modal -->
 	<div id="giftCode" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		#startFormTag(controller="main", action="order", method="post")#
+		#startFormTag(controller="main", action="plans", method="post")#
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 				<h3 id="myModalLabel">Enter Gift/Promotional Code</h3>

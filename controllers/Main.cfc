@@ -8,27 +8,7 @@
 			<cfcase value="one-off">
 			
 				<!--- ASAP - use day+2 --->
-				<cfreturn DateFormat(DateAdd("d", 2, now()), 'yyyy-mm-dd')>
-			
-			</cfcase>
-		
-			<cfcase value="fortnightly">
-		
-				<!--- Work out the start date so we have a buffer for ordering box contents --->
-				<cfset dow = DayOfWeek(now())>
-				
-				<cfif dow LT 2>
-					<!--- If Sunday, push order to a week Monday --->
-					<cfset startInc = 8>
-				<cfelseif dow LTE 4>
-					<!--- Monday - Wednesday (inc) we can accept for first box following week --->
-					<cfset startInc = (7 - dow) + 2>
-				<cfelse>
-					<!--- Thursday - Saturday (inc) push order to a week Monday --->
-					<cfset startInc = (7 - dow) + 9>						
-				</cfif>
-				
-				<cfreturn DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
+				<cfreturn '1-2 Working Days'>
 			
 			</cfcase>
 			
@@ -63,6 +43,26 @@
 				
 			</cfcase>
 			
+			<cfdefaultcase>
+		
+				<!--- Work out the start date so we have a buffer for ordering box contents --->
+				<cfset dow = DayOfWeek(now())>
+				
+				<cfif dow LT 2>
+					<!--- If Sunday, push order to a week Monday --->
+					<cfset startInc = 8>
+				<cfelseif dow LTE 4>
+					<!--- Monday - Wednesday (inc) we can accept for first box following week --->
+					<cfset startInc = (7 - dow) + 2>
+				<cfelse>
+					<!--- Thursday - Saturday (inc) push order to a week Monday --->
+					<cfset startInc = (7 - dow) + 9>						
+				</cfif>
+				
+				<cfreturn DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
+			
+			</cfdefaultcase>
+			
 		</cfswitch>
 		
 	</cffunction>
@@ -75,13 +75,10 @@
 			<cfset loc.promo = model("promocode").findAll(where="code='#params.promoCode#'")>
 			
 			<cfif loc.promo.RecordCount EQ 1>
-				<cfset flashInsert(success="Your promo code was found and applied successfully!")>
+				<cfset flashInsert(success="<strong>Promo Code:</strong> Your promo code was found and applied successfully! <br />#loc.promo.message#")>
 				
 				<!--- Check if the promo code is active and update the customer --->
-				<cfset data.promoCodeID = loc.promo.ID>
-				
-				<!--- Store the promo code in the session for reference --->
-				
+				<cfset SESSION.promoCodeID = loc.promo.ID>
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your promo code #UCase(params.promoCode)# was not found, please check for typos and try again")>
 				<cfset redirectTo(route="home")>
@@ -129,7 +126,7 @@
 
 	<cffunction name="init">
 	
-		<cfset filters(through="checkPromoCode", only="order")>
+		<cfset filters(through="checkPromoCode", only="plans")>
 	
 	</cffunction>
 	
@@ -149,50 +146,57 @@
 			<cfset loc.customerID = decrypt(SESSION.customerID,GetEncryptKey(),'CFMX_COMPAT','Base64')>
 
 			<!--- Load the customer's details (and main child) --->
-			<cfset data.customer = model("customer").findOne(where="ID=#loc.customerID#", include="customerchildren", returnAs="query")>
+			<cfset data.customer = model("customer").findOne(where="ID=#loc.customerID#", include="customerchildren,promocode", returnAs="query")>
 		
 			<cfif data.customer.RecordCount GT 0>
 
-				<!--- Define vars here --->
-				<cfset loc.client_id = GetGoCardless('app_identifier')>
-				<cfset loc.merchant_id = GetGoCardless('merchant_id')>
-				<cfset loc.nonce = CreateUUID()>
-				<cfset loc.timestamp = '#DateFormat(now(),"yyyy-mm-dd")# #TimeFormat(now(),"HH:MM:SS")#'>
-				
-				<!--- Subscription vars --->
+				<!--- Work out an estimated start date --->
 				<cfset data.payment.start_at = calcStartDate(data.customer.planname)>
 
-				<cfswitch expression="#data.customer.planname#">
-					<cfcase value="one-off">
-						<!--- Disable Direct Debit --->
-						<cfset data.directDebit = false>
-					</cfcase>
-					<cfcase value="monthly">
-						<cfset data.plan_interval = 'month'>
-						<cfset data.plan_interval_frequency = 1>
-						<cfset data.plan_amount = 15>
-					</cfcase>
-					<cfdefaultcase>
-						<cfset data.plan_interval = 'week'>
-						<cfset data.plan_interval_frequency = 2>
-						<cfset data.plan_amount = 8>
-					</cfdefaultcase>
-				</cfswitch>
-				
-				<!--- Check if we can use Direct Debit --->
-				<cfif data.directDebit EQ true>
-				
-					<!--- Bodge together our variables (Inc USER DATA) --->
-					<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#data.payment.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+				<!--- Work out if we're on a promo code (can't use GoCardless with Promo codes) --->
+				<cfif IsDefined("data.customer.code") AND data.customer.code GT ''>
+					<cfset data.directdebit = false>
+				<cfelse>
+					
+					<!--- Define vars here --->
+					<cfset loc.client_id = GetGoCardless('app_identifier')>
+					<cfset loc.merchant_id = GetGoCardless('merchant_id')>
+					<cfset loc.nonce = CreateUUID()>
+					<cfset loc.timestamp = '#DateFormat(now(),"yyyy-mm-dd")# #TimeFormat(now(),"HH:MM:SS")#'>
+	
+					<cfswitch expression="#data.customer.planname#">
+						<cfcase value="one-off">
+							<!--- Disable Direct Debit --->
+							<cfset data.directDebit = false>
+						</cfcase>
+						<cfcase value="monthly">
+							<cfset data.plan_interval = 'month'>
+							<cfset data.plan_interval_frequency = 1>
+							<cfset data.plan_amount = 15>
+						</cfcase>
+						<cfdefaultcase>
+							<cfset data.plan_interval = 'week'>
+							<cfset data.plan_interval_frequency = 2>
+							<cfset data.plan_amount = 8>
+						</cfdefaultcase>
+					</cfswitch>
+					
+					<!--- Check if we can use Direct Debit --->
+					<cfif data.directDebit EQ true>
+					
+						<!--- Bodge together our variables (Inc USER DATA) --->
+						<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#data.payment.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+							
+						<!--- Encrypt the signature --->
+						<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
 						
-					<!--- Encrypt the signature --->
-					<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
-					
-					<cfsavecontent variable="httpURL">
-						<cfoutput>#Trim(GetGoCardless('gc_url'))#/connect/subscriptions/new?#sigTemp#&signature=#signature#</cfoutput>
-					</cfsavecontent>
-					
-					<cfset data.payment.url = httpURL>
+						<cfsavecontent variable="httpURL">
+							<cfoutput>#Trim(GetGoCardless('gc_url'))#/connect/subscriptions/new?#sigTemp#&signature=#signature#</cfoutput>
+						</cfsavecontent>
+						
+						<cfset data.payment.url = httpURL>
+						
+					</cfif>
 					
 				</cfif>
 
@@ -208,6 +212,10 @@
 	
 	<cffunction name="complete">
 	
+		<!--- Remove the promocode (if it exists) --->
+		<cfif IsDefined("SESSION.promoCodeID")>
+			<cfset StructDelete(SESSION, 'promoCodeID')>
+		</cfif>
 	
 		<!--- TODO Mail to mothership that this user has signed up --->
 	
@@ -339,6 +347,11 @@
 			<cfif ListContains("one-off,fortnightly,monthly", params.customer.planname) EQ 0>
 				<cfset flashInsert(error='Sorry - the plan you selected was not found, please try again')>
 				<cfset redirectTo(controller="main", action="plans")>
+			</cfif>
+			
+			<!--- Check if we have a promo code in the session to use --->
+			<cfif IsDefined("SESSION.promoCodeID") AND SESSION.promoCodeID GT ''>
+				<cfset params.customer.promoCodeID = SESSION.promoCodeID>
 			</cfif>
 			
 			<cfset data.customer = model("customer").create(params.customer)>
