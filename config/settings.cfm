@@ -8,3 +8,4 @@
 )>
 
 <cfset set(dataSourceName="weekendbox")>
+<cfset set(reloadPassword="raiseatree")>
