@@ -2,7 +2,7 @@
 	
 	<div class="row">
         <header class="highlight span12">
-            <h2>Healthy, Green &amp; Creative <strong>Children's Activities</strong></h2>
+            <h2>Healthy, Green &amp; Creative Children's Activities</h2>
             <h3>For little ones aged 3-8, delivered right to your door.</h3>               
 		</header>
 	</div>
@@ -72,7 +72,7 @@
 	<section class="container">
 		<div class="row">
 	    	<div class="highlight span12">
-				<p>#linkTo(controller="main", action="order", text="Join The Club Now &raquo;", role="button", class="big-btn")#</p>
+				<p>#linkTo(controller="main", action="plans", text="Join The Club Now &raquo;", role="button", class="big-btn")#</p>
 	            <p>Registration takes <strong>1 minute</strong>. That's quicker than it takes to boil the kettle!</p>    
 			</div>
 		</div>

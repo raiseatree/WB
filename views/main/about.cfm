@@ -11,6 +11,8 @@
 				<li class="nav-header">About Weekend Box</li>
 				<li><a href="##philosophy">Philosophy</a></li>
 				<li><a href="##environment">Environment</a></li>
+				<!---<li class="nav-header">Partners</li>
+				<li><a href="##groovebulb">Groovebulb</a></li>--->
 				<li class="nav-header">Giving Back</li>
 				<li><a href="##christmas">Christmas Box Appeal</a></li>
 				<li class="nav-header">About Andy</li>
@@ -49,7 +51,7 @@
 			<p>We're really proud that everything in your Weekend Box is either reusable or recyclable; we're even prouder that 95% of each Weekend Box's contents coming from recycled material with us constantly trying to improve this percentage.</p>
 			<p>In addition, one focus for us now is in creating our own custom boxes that can be upcycled in something else. We'll keep you posted on our progress!</p>
 
-			<div class="alert"><strong>Help Us!</strong> Do you know of a light, safe and secure way of transporting glue, herbs or spices? We'd love to hear from you: #mailTo('hello@weekendboxclub.com')#</div>
+			<div class="alert"><strong>Help Us!</strong> Do you know of a light, safe and secure way of transporting glue, herbs or spices? We'd love to hear from you: #mailTo('hello@weekendboxclub.com')#</div>	
 			
 			<hr>
 			

@@ -29,14 +29,16 @@
 						#linkTo(route="home", text=ImageTag(source='weekend-box-logo-sml.png', alt='Weekend Box'), class="brand")#
 		                <ul class="nav">
 		                    <li>#linkTo(route="home", text="Home")#</li>
-		                    <li>#linkTo(controller="main", action="about", text="About")#</li>
 		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
-		                    <li>#linkTo(controller="main", action="faqs", text="FAQs")#</li>
 		                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
 		                    <li>#linkTo(controller="main", action="exampleBox", text="Example Box")#</li>
 		                    <li class="active">#linkTo(controller="main", action="plans", text="Join The Club!")#</li>
 		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
 		                </ul>
+		                
+		                <div class="span2 pull-right">
+							<p><a href="##newsletter" role="button", class="btn btn-info", style="color:##FFF" data-toggle="modal">Join our Weekly Newsletter &raquo;</a></p>
+						</div>
 		            </div>
 		        </div>
 		    </nav>
@@ -61,7 +63,7 @@
 			<hr class="shadow-line" />         
 			<nav class="links">             
 			    #linkTo(route="home", text="Home")#
-			    #linkTo(controller="main", action="home", text="About")#
+			    #linkTo(controller="main", action="about", text="About")#
 				<!---#linkTo(href="http://BLOG_URL_HERE", text="Blog")#--->
 				#linkTo(controller="main", action="faqs", text="FAQs")#
 				#linkTo(controller="main", action="exampleBox", text="Example Box")#
@@ -74,6 +76,42 @@
 			</nav>                 
 			
 		</footer>
+		
+		<!-- Newsletter Signup -->
+		<div id="newsletter" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			#startFormTag(controller="main", action="joinNewsletter", method="post")#
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<h3 id="myModalLabel">Join the Weekend Box Newsletter</h3>
+				</div>
+				<div class="modal-body">
+					<p>Enter your email address below and we'll send you a weekly snapshot of <strong>interesting ideas</strong> to do with your little ones, as well as <strong>competitions</strong>, <strong>offers</strong> and <strong>free activities</strong>!</p>		
+					<div class="span3">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="inputFirstName"><strong>Full Name</strong></label>
+								<div class="controls">
+									#textField(objectName="data.subscriber", id="inputFirstName", property="firstName", label="", required="true", placeholder="First Name", class="input-small")# 
+									#textField(objectName="data.subscriber", property="surname", label="", required="true", placeholder="Surname", class="input-small")#
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputEmail"><strong>Email Address</strong></label>
+								<div class="controls">
+									#textField(objectName="data.subscriber", id="inputEmail", property="email", label="", required="true", placeholder="Email", class="input-large")# 
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="span2">
+						#imageTag('squirrel.png')#
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-info">Join Newsletter &raquo;</button>
+				</div>
+			#endFormTag()#
+		</div>
 				
 		#javascriptIncludeTag('bootstrap.min')#
 		
@@ -102,8 +140,6 @@
 		<!--- Add This --->
 		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : true};</script>
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js##pubid=ra-518d665a23c7538c"></script>
-		
-					
 		
 	</body>
 </html>

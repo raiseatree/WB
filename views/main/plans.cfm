@@ -8,13 +8,13 @@
 			<aside class="span3">
 				
 				<cfif Not(IsDefined("data.promoAmount"))>
-					<p><a href="##giftCode" role="button" data-toggle="modal" class="btn btn-success" style="color: ##FFF">Promo/Gift Code? Enter it here &raquo;</a></p>
+					<p><a href="##giftCode" role="button" data-toggle="modal" class="btn btn-success" style="color: ##FFF">Promo/Gift Code?<br /> Enter it here &raquo;</a></p>
 				</cfif>
 			
 				<ul class="nav nav-list">
 					<li class="nav-header">Contact Us</li>
 					<li><a href="##"><i class="icon-bullhorn"></i> +44(0)191 512 0640</a></li>
-					<li><a href="mailTo:hello@weekendboxclub.com"><i class='icon-envelope'></i> hello@weekendboxclub.com</a></li>
+					<li><a href="mailTo:hello@weekendboxclub.com"><i class='icon-envelope'></i> Email Us</a></li>
 				</ul>
 			</aside>
 	
@@ -27,10 +27,10 @@
 					<cfif IsDefined("data.promoAmount") AND data.promoAmount GT ''><div class="alert alert-error">Option unavailable with this offer</div></cfif>
 	
 					<ul class="unstyled plan-features">
-						<li>4 Activities</li>
+						<li>4 Activities (per box)</li>
 						<li>Everything you need</li>
 						<li>100% Recyclable/Reusable</li>
-						<li>FREE Delivery (usually next day)</li>
+						<li>FREE Delivery</li>
 						<li><strong>Great first-time box</strong></li>
 					</ul>
 	
@@ -45,7 +45,7 @@
 	
 					<ul class="unstyled plan-features">
 						<li><strong>FREE Wall Planner</strong></li>
-						<li>4 Activities</li>
+						<li>4 Activities (per box)</li>
 						<li>Everything you need</li>
 						<li>100% Recyclable/Reusable</li>
 						<li>FREE Delivery</li>
@@ -63,7 +63,7 @@
 		
 					<ul class="unstyled plan-features">
 						<li>2 Boxes</li>
-						<li>4 Activities</li>
+						<li>4 Activities (per box)</li>
 						<li>Everything you need</li>
 						<li>FREE Delivery</li>
 						<li><strong>Best Value Plan</strong></li>

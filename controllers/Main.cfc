@@ -89,6 +89,13 @@
 	
 	</cffunction>
 
+	<cffunction name="loadSubscriberInstance" access="private">
+		
+		<!--- Create a new newsletter subscriber instance --->
+		<cfset data.subscriber = model("newsletter").new()>
+		
+	</cffunction>
+
 	<cffunction name="sha256" access="private">
 		<cfargument name="Data" type="string" required="true" />
 		<cfargument name="Key" type="string" required="true" />
@@ -127,6 +134,7 @@
 
 	<cffunction name="init">
 	
+		<cfset filters(through="loadSubscriberInstance")>
 		<cfset filters(through="checkPromoCode", only="plans")>
 	
 	</cffunction>
@@ -259,6 +267,28 @@
 	
 	</cffunction>
 	
+	<cffunction name="joinNewsletter">
+	
+		<cfif IsPost()>
+		
+			<!--- Add the user --->
+			<cfset add = model("newsletter").create(params.subscriber)>
+			
+			<cfif add.hasErrors()>
+				<cfset flashInsert(error="Sorry - there was a problem adding you to the newsletter: #Serialize(add.allErrors())#")>
+			<cfelse>
+				<cfset flashInsert(success="Thanks for joining the Weekend Box newsletter, #params.subscriber.firstName#")>
+			</cfif>
+		
+		<cfelse>
+			<cfset flashInsert(error="Sorry - you can't access the newsletter like that")>
+		</cfif>
+		
+		<!--- Go Home --->
+		<cfset redirectTo(route="home")>
+	
+	</cffunction>
+	
 	<cffunction name="order">
 	
 		<!--- Create new customer and child instance --->
@@ -382,4 +412,4 @@
 		
 	</cffunction>
 
-</cfcomponent>
+</cfcomponent>	
