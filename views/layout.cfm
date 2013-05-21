@@ -27,7 +27,12 @@
 		        <div class="navbar-inner">
 		            <div class="container">
 						#linkTo(route="home", text=ImageTag(source='weekend-box-logo-sml.png', alt='Weekend Box'), class="brand")#
-		                <ul class="nav">
+		                
+		                <div class="span2 pull-right">
+							<p><a href="##newsletter" role="button", class="btn btn-info", style="color:##FFF" data-toggle="modal">Join our Weekly Newsletter &raquo;</a></p>
+						</div>
+						
+		                <ul class="nav pull-right">
 		                    <li>#linkTo(route="home", text="Home")#</li>
 		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
 		                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
@@ -35,10 +40,7 @@
 		                    <li class="active">#linkTo(controller="main", action="plans", text="Join The Club!")#</li>
 		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
 		                </ul>
-		                
-		                <div class="span2 pull-right">
-							<p><a href="##newsletter" role="button", class="btn btn-info", style="color:##FFF" data-toggle="modal">Join our Weekly Newsletter &raquo;</a></p>
-						</div>
+
 		            </div>
 		        </div>
 		    </nav>
