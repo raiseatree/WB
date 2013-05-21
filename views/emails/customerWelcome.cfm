@@ -31,13 +31,13 @@
 		
 			<div class="row">
 				
-				<div class="span9">
+				<div class="span8">
 				
 					<h4>Next Steps:</h4>
 					
 					<article class="clearfix">
 			            <img src="http://www.weekendboxclub.com/images/red-box.png" class="pull-left span3">
-			            <div class="span5">
+			            <div class="span4">
 			            	<h5>Invite your friends</h5>
 			            	<p>For <strong>every friend</strong> you refer, we'll send you an extra Craft Kit in your next box <strong>or</strong> you can donate the Craft Kit to our <a href="http://www.weekendboxclub.com/main/about##christmas">Christmas Box Appeal</a></p>
 			            	<p><strong>Forward this email to them and remind them to mention your name when signing up.</strong></p>
@@ -51,7 +51,7 @@
 			            	<a href="http://www.facebook.com/weekendboxclub"><img src="http://www.weekendboxclub.com/images/fb-mid.png" alt="Facebook Logo" class="pull-right span1"></a>
 				            <a href="http://www.twitter.com/weekendboxclub"><img src="http://www.weekendboxclub.com/images/twitter-mid.png" alt="Twitter Logo" class="pull-right span1"></a>
 						</div>
-						<div class="span5">
+						<div class="span4">
 				            <h5>Join us on #linkTo(href="http://www.facebook.com/weekendboxclub", target="_blank", text="Facebook")# &amp; #linkTo(href="http://www.twitter.com/weekendboxclub", target="_blank", text="Twitter")#</h5>
 			            	<p>Keep up to date with bonus activities, latest news and offers via our Facebook &amp; Twitter pages.</p>
 			            	<p><a href="http://www.facebook.com/weekendboxclub">Weekend Box on Facebook</a></p>
@@ -63,7 +63,7 @@
 					
 		            <article class="clearfix">
 			            <img src="http://www.weekendboxclub.com/images/andy-stephenson.jpg" class="img-circle pull-left span3" />
-			            <div class="span5">
+			            <div class="span4">
 				            <h5>Let me know what you think</h5>
 			            	<p>I'm always looking for ways to improve your Weekend Boxes - feel free to drop me a line if you have any feedback or ideas you'd like to see.</p>
 			            	<p>You can reply directly to this email, Tweet us (<a href="http://www.twitter.com/weekendboxclub">@WeekendBoxClub</a>) or send us a message through Facebook (<a href="http://www.facebook.com/weekendboxclub">/WeekendBoxClub</a>).</p>
@@ -71,18 +71,17 @@
 			            	<p><strong>Founder, Weekend Box Club</strong></p>
 			            </div>
 		            </article>
-		            
-		            <hr>
-					
-					<h4>Frequently Asked Questions</h4>
-					#includePartial('/main/faqs')#
 					
 				</div>
 				
-				<aside class="span3">
+				<aside class="span4">
 					<div class="alert alert-success">
 						<p><strong>First Box Arrival Date (Estimate)</strong></p>
 						<p><i class="icon-calendar"></i> <cfif IsDate(start_at)>#DateFormat(DateAdd("d", 4, start_at), "dddd dd mmmm yyyy")#<cfelse>#start_at#</cfif></p>
+						<br />
+						<p><strong>Delivery Details</strong></p>
+						<p><strong>#data.name#</strong><br />#data.address#<br /><cfif data.address2 GT ''>#data.address2#<br /></cfif>#data.city#<br />#data.postcode#</p>
+				
 					</div>
 				
 					<div class="alert alert-info">
@@ -91,6 +90,14 @@
 						<p><strong>Email:</strong> Just hit Reply!</p>
 					</div>
 				</aside>
+			
+			</div>
+			
+			<div class="row">
+			
+				<hr>
+				<h4>Frequently Asked Questions</h4>
+				#includePartial('/main/faqs')#
 			
 			</div>
 		

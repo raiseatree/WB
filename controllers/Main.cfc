@@ -230,17 +230,17 @@
 		<cfif IsDefined("SESSION.customerID")>
 			
 			<!--- load the customer --->
-			<cfset loc.data = model("customer").findOne(where="ID=#Decrypt(SESSION.customerID, GetEncryptKey(), 'CFMX_COMPAT', 'Base64')#", 
+			<cfset customer = model("customer").findOne(where="ID=#Decrypt(SESSION.customerID, GetEncryptKey(), 'CFMX_COMPAT', 'Base64')#", 
 					include="customerchildren", returnAs="query")>
 		
-			<cfif loc.data.RecordCount GT 0>
+			<cfif customer.RecordCount GT 0>
 			
 				<!--- Mail to mothership that this user has signed up --->
-				<cfset sendEmail(to=loc.data.email, 
+				<cfset sendEmail(to=customer.email, 
 						template="/emails/customerWelcome",
 						from="Weekend Box Club <hello@weekendboxclub.com>", 
 						subject="Woo Hoo! Welcome to Weekend Box Club",
-						data=loc.data, start_at=SESSION.start_at)>
+						data=customer, start_at=SESSION.start_at)>
 	
 			</cfif>
 		
