@@ -160,7 +160,7 @@
 			<cfif data.customer.RecordCount GT 0>
 
 				<!--- Work out an estimated start date --->
-				<cfset data.payment.start_at = calcStartDate(data.customer.planname)>
+				<cfset SESSION.start_at = calcStartDate(data.customer.planname)>
 
 				<!--- Work out if we're on a promo code (can't use GoCardless with Promo codes) --->
 				<cfif IsDefined("data.customer.code") AND data.customer.code GT ''>
@@ -194,7 +194,7 @@
 					<cfif data.directDebit EQ true>
 					
 						<!--- Bodge together our variables (Inc USER DATA) --->
-						<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#data.payment.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+						<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#SESSION.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
 							
 						<!--- Encrypt the signature --->
 						<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
@@ -225,8 +225,30 @@
 		<cfif IsDefined("SESSION.promoCodeID")>
 			<cfset StructDelete(SESSION, 'promoCodeID')>
 		</cfif>
+		
+		<!--- Check if we found a customer ID in the session --->
+		<cfif IsDefined("SESSION.customerID")>
+			
+			<!--- load the customer --->
+			<cfset loc.data = model("customer").findOne(where="ID=#Decrypt(SESSION.customerID, GetEncryptKey(), 'CFMX_COMPAT', 'Base64')#", 
+					include="customerchildren", returnAs="query")>
+		
+			<cfif loc.data.RecordCount GT 0>
+			
+				<!--- Mail to mothership that this user has signed up --->
+				<cfset sendEmail(to=loc.data.email, 
+						template="/emails/customerWelcome",
+						from="Weekend Box Club <hello@weekendboxclub.com>", 
+						subject="Woo Hoo! Welcome to Weekend Box Club",
+						data=loc.data, start_at=SESSION.start_at)>
 	
-		<!--- TODO Mail to mothership that this user has signed up --->
+			</cfif>
+			
+			<cfabort>
+		
+		<cfelse>
+			<!--- TODO Mail error that someone's arrived on completion page after timeout/by error --->
+		</cfif>
 	
 	</cffunction>
 	
@@ -302,66 +324,6 @@
 		<cfset data.child = model("customerchildren").new()>
 		
 	</cffunction>
-	
-	<!---<cffunction name="process">
-		
-		<cfif IsPost()>
-		
-			<!--- Load the customer from the session --->
-			<cfif IsDefined("SESSION.customerID")>
-			
-				<!--- Load the customer's details --->
-				<cfset loc.customer = model("customer").findOne(where="ID=#decrypt(SESSION.customerID,GetEncryptKey(),"CFMX_COMPAT","Base64")#", include="promocode", returnAs="query")>
-				
-				<cfif loc.customer.RecordCount EQ 1>
-				
-					<!--- Define vars here --->
-					<cfset loc.client_id = GetGoCardless('app_identifier')>
-					<cfset loc.merchant_id = GetGoCardless('merchant_id')>
-					<cfset loc.nonce = CreateUUID()>
-					<cfset loc.timestamp = '#DateFormat(now(),"yyyy-mm-dd")# #TimeFormat(now(),"HH:MM:SS")#'>
-					
-					<!--- Subscription vars --->
-					<cfset loc.start_at = calcStartDate()>
-					
-					<!--- Bodge together our variables (Inc USER DATA) --->
-					<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=8&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=2&subscription%5Binterval_unit%5D=week&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#loc.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(loc.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(loc.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(loc.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(loc.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(loc.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(loc.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
-						
-					<!--- Encrypt the signature --->
-					<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
-					
-					<cfsavecontent variable="httpURL">
-						<cfoutput>#Trim(GetGoCardless('gc_url'))#/connect/subscriptions/new?#sigTemp#&signature=#signature#</cfoutput>
-					</cfsavecontent>
-					
-					<cfset data.url = httpURL>
-						
-					<!--- Check if the customer is on a promo plan 
-					<cfif loc.customer.setupfee GT ''>
-						<cfset loc.paydata.setupfee = loc.customer.setupfee>
-					<cfelse>
-						<cfset loc.paydata.setupfee = 0>
-					</cfif>--->
-				
-					<!--- Set the params for the payment --->
-					
-				<cfelse>
-					<!--- TODO --->
-					<cfabort>
-				</cfif>
-			
-			<cfelse>
-				<!--- Flast and forward home --->
-				<cfset flashInsert(error="Sorry - your details weren't found, please re-register below:")>
-				<cfset redirectTo(route="home")>
-			</cfif>
-		
-		<cfelse>
-			<!--- TODO --->
-			<cfabort>
-		</cfif>
-		
-	</cffunction>--->
 	
 	<cffunction name="register">
 		

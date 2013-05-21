@@ -25,7 +25,7 @@
 		             <article class="span4 center-align">
 			             #imageTag('red-box.png')#
 		            	<h3>Invite your friends</h3>
-		            	<p>For <strong>every friend</strong> you refer, we'll send you an extra Craft Kit in your next box or you can donate the Craft Kit to our #linkTo(route="christmas", text="Christmas Box Appeal")#</p>
+		            	<p>For <strong>every friend</strong> you refer, we'll send you an extra Craft Kit in your next box or you can donate the Craft Kit to our #linkTo(controller="main", action="about", anchor="christmas", text="Christmas Box Appeal")#</p>
 		            </article>
 		            
 				</div>

@@ -10,7 +10,8 @@
 	<p>We post all boxes out using Royal Mail Second Class on Mondays. You should definitely receive your box by Friday but in exceptional circumstances it may arrive on Saturday morning.</p>
 	
 	<h5>When will I be charged?</h5>
-	<p>We only charge you when we post your box each fortnight (on the Monday). Sometimes it can take a day or so to show on your bank statement.</p>
+	<p>With Direct Debits, we only charge you when we post your box each fortnight (on the Monday). With PayPal, you will be charged within 1-2 working days of ordering your subscription and then on that same day every fortnight.</p>
+	<p>Sometimes it can take a day or so to show on your bank statement.</p>
 	
 	<h5>Can I add multiple children?</h5>
 	<p>Of course! Unfortunately we can't add multiple children through the website so please place an order and then send an email to #mailto('hello@weekendboxclub.com')# with your other children's details. It costs &pound4.00 extra per child per box.</p>
