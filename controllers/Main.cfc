@@ -243,8 +243,6 @@
 						data=loc.data, start_at=SESSION.start_at)>
 	
 			</cfif>
-			
-			<cfabort>
 		
 		<cfelse>
 			<!--- TODO Mail error that someone's arrived on completion page after timeout/by error --->
