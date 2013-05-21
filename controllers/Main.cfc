@@ -241,7 +241,7 @@
 						from="Weekend Box Club <hello@weekendboxclub.com>", 
 						bcc="hello@weekendboxclub.com", 
 						subject="Woo Hoo! Welcome to Weekend Box Club",
-						data=customer, start_at=SESSION.start_at)>
+						dataIn=customer, start_at=SESSION.start_at)>
 	
 			</cfif>
 		

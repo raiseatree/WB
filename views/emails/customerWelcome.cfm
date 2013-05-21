@@ -1,4 +1,4 @@
-<cfparam name="data">
+<cfparam name="dataIn">
 
 <cfoutput>
 <!DOCTYPE HTML>
@@ -24,7 +24,7 @@
 		
 			<div class="row">
 		        <header class="highlight span12">
-		            <h2>Welcome to Weekend Box, #data.firstName#!</h2>
+		            <h2>Welcome to Weekend Box, #dataIn.firstName#!</h2>
 		            <h3>We've received your order and are preparing your first box now.</h3>               
 				</header>
 			</div>
@@ -80,7 +80,7 @@
 						<p><i class="icon-calendar"></i> <cfif IsDate(start_at)>#DateFormat(DateAdd("d", 4, start_at), "dddd dd mmmm yyyy")#<cfelse>#start_at#</cfif></p>
 						<br />
 						<p><strong>Delivery Details</strong></p>
-						<p><strong>#data.name#</strong><br />#data.address#<br /><cfif data.address2 GT ''>#data.address2#<br /></cfif>#data.city#<br />#data.postcode#</p>
+						<p><strong>#dataIn.name#</strong><br />#dataIn.address#<br /><cfif dataIn.address2 GT ''>#dataIn.address2#<br /></cfif>#dataIn.city#<br />#dataIn.postcode#</p>
 				
 					</div>
 				
