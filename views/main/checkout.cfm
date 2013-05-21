@@ -12,7 +12,7 @@
 			<p><strong>#data.customer.name#</strong><br />#data.customer.address#<br /><cfif data.customer.address2 GT ''>#data.customer.address2#<br /></cfif>#data.customer.city#<br />#data.customer.postcode#</p>
 		
 			<h4>First Box Arrival Date (Estimate)</h4>
-			<p><i class="icon-calendar"></i> <cfif IsDefined("data.payment.start_at") AND IsDate(data.payment.start_at)>#DateFormat(DateAdd("d", 4, data.payment.start_at), "dddd dd mmmm yyyy")#<cfelse>#data.payment.start_at#</cfif></p>
+			<p><i class="icon-calendar"></i> <cfif IsDate(data.payment.start_at)>#DateFormat(DateAdd("d", 4, data.payment.start_at), "dddd dd mmmm yyyy")#<cfelse>#data.payment.start_at#</cfif></p>
 
 			<div class="alert alert-info">
 				<h4>Any Questions?</h4>
