@@ -12,7 +12,8 @@
 			
 			</cfcase>
 			
-			<cfcase value="monthly">
+			<!--- Monthly &amp; Quarterly Payments --->
+			<cfdefaultcase>
 			
 				<!--- Work out the day of the month so we can work out if we can ship out boxes this month --->
 				<cfset dom = DateFormat(now(),"dd")>
@@ -41,9 +42,9 @@
 				
 				<cfreturn DateFormat(startDate, 'yyyy-mm-dd')>
 				
-			</cfcase>
+			</cfdefaultcase>
 			
-			<cfdefaultcase>
+			<!---<cfdefaultcase>
 		
 				<!--- Work out the start date so we have a buffer for ordering box contents --->
 				<cfset dow = DayOfWeek(now())>
@@ -61,7 +62,7 @@
 				
 				<cfreturn DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
 			
-			</cfdefaultcase>
+			</cfdefaultcase>--->
 			
 		</cfswitch>
 		
@@ -178,16 +179,21 @@
 							<!--- Disable Direct Debit --->
 							<cfset data.directDebit = false>
 						</cfcase>
-						<cfcase value="monthly">
+						<cfcase value="quarterly">
+							<cfset data.plan_interval = 'month'>
+							<cfset data.plan_interval_frequency = 3>
+							<cfset data.plan_amount = 42>
+						</cfcase>
+						<cfdefaultcase>
 							<cfset data.plan_interval = 'month'>
 							<cfset data.plan_interval_frequency = 1>
 							<cfset data.plan_amount = 15>
-						</cfcase>
-						<cfdefaultcase>
+						</cfdefaultcase>
+						<!---<cfdefaultcase>
 							<cfset data.plan_interval = 'week'>
 							<cfset data.plan_interval_frequency = 2>
 							<cfset data.plan_amount = 8>
-						</cfdefaultcase>
+						</cfdefaultcase>--->
 					</cfswitch>
 					
 					<!--- Check if we can use Direct Debit --->
@@ -336,7 +342,7 @@
 			</cfif>
 			
 			<!--- Check the plan name --->
-			<cfif ListContains("one-off,fortnightly,monthly", params.customer.planname) EQ 0>
+			<cfif ListContains("one-off,monthly,quarterly", params.customer.planname) EQ 0>
 				<cfset flashInsert(error='Sorry - the plan you selected was not found, please try again')>
 				<cfset redirectTo(controller="main", action="plans")>
 			</cfif>
