@@ -245,7 +245,7 @@
 				<cfset sendEmail(to=customer.email, 
 						template="/emails/customerWelcome",
 						from="Weekend Box Club <hello@weekendboxclub.com>", 
-						bcc="hello@weekendboxclub.com", 
+						bcc="andystephenson88@gmail.com", 
 						subject="Woo Hoo! Welcome to Weekend Box Club",
 						dataIn=customer, start_at=SESSION.start_at)>
 	
