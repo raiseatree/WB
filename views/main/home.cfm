@@ -2,7 +2,8 @@
 	
 	<div class="row">
         <header class="highlight span12">
-            <h2>Healthy, Green &amp; Creative Children's Activities</h2>
+            <!---<h2>Healthy, Green &amp; Creative Children's Activities</h2>--->
+			<h2>Amazing Weekends for You &amp; Your Children</h2>
             <h3>For little ones aged 3-8, delivered right to your door.</h3>               
 		</header>
 	</div>
