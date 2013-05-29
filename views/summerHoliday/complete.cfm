@@ -31,12 +31,6 @@
 				</div>
 			</div>
 		</section>
-		
-			<!--- 
-				1. Check your email
-				2. Join us on Facebook and Twitter
-				3. Get excited!
-			--->
 	</div>
 
 </cfoutput>

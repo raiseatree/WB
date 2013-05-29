@@ -73,7 +73,10 @@
 				</div>
 				
 				<aside class="span4">
+
 					<div class="alert alert-success">
+						<p><strong>Voucher Code</strong></p>
+						<p>#redeemer.code#</p>
 						<p><strong>Box Arrival Date (Estimate)</strong></p>
 						<p><i class="icon-calendar"></i> #DateFormat(start_at, "dddd dd mmmm yyyy")#</p>
 						<br />
