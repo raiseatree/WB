@@ -11,8 +11,8 @@
 				<li class="nav-header">About Weekend Box</li>
 				<li><a href="##philosophy">Philosophy</a></li>
 				<li><a href="##environment">Environment</a></li>
-				<!---<li class="nav-header">Partners</li>
-				<li><a href="##groovebulb">Groovebulb</a></li>--->
+				<li class="nav-header">Partners</li>
+				<li><a href="##groovebulb">Groovebulb</a></li>
 				<li class="nav-header">Giving Back</li>
 				<li><a href="##christmas">Christmas Box Appeal</a></li>
 				<li class="nav-header">About Andy</li>
@@ -52,6 +52,19 @@
 			<p>In addition, one focus for us now is in creating our own custom boxes that can be upcycled in something else. We'll keep you posted on our progress!</p>
 
 			<div class="alert"><strong>Help Us!</strong> Do you know of a light, safe and secure way of transporting glue, herbs or spices? We'd love to hear from you: #mailTo('hello@weekendboxclub.com')#</div>	
+			
+			<hr>
+			
+			<div id="groovebulb" class="clearfix">
+				<h4>Groovebulb <small>Creators of some of our cool up-cycling activities!</small></h4>	
+				#imageTag(source="groovebulb.png", class="pull-right span3 clearfix")#
+				<p>Groovebulb are suckers for a good eco activity and I hear the walls of groovebulb HQ resonated with excitement when I first approached them. I fell for groovebulb's Give it a go Friday activities and after seeing some more of their ideas, I just couldn't resist getting them involved with Weekend Box! So watch out for upcycling inspiration a plenty, from old magazines to used plastic bags (...those ones you keep forgetting to take with you to the supermarket)!</p>
+				<p>When the friendly folk at Groovebulb aren't on the phone to me chatting about the next ideas for you and your little ones to enjoy, they're producing super low energy, BIG personality groovebulbs! Their eco friendly LED's save up to 85% more energy compared to incandescent bulbs and don't contain any mercury. Good for your pocket as well as the planet!</p>
+				<div class="alert alert-success">
+					Weekend Box users can get an <strong>WHOPPING 20% OFF</strong> at groovebulb when you use the promo code <strong>WBGROOVE</strong> at the checkout.<br /><br />
+					<a href="http://www.groovebulb.com" target="_blank" class="btn btn-success" style="color: ##FFF">groovebulb website &raquo;</a>
+				</div>
+			</div>
 			
 			<hr>
 			
