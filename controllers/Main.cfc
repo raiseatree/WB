@@ -90,13 +90,6 @@
 	
 	</cffunction>
 
-	<cffunction name="loadSubscriberInstance" access="private">
-		
-		<!--- Create a new newsletter subscriber instance --->
-		<cfset data.subscriber = model("newsletter").new()>
-		
-	</cffunction>
-
 	<cffunction name="sha256" access="private">
 		<cfargument name="Data" type="string" required="true" />
 		<cfargument name="Key" type="string" required="true" />

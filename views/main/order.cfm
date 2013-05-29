@@ -1,5 +1,5 @@
 <cfparam name="data">
-<cfparam name="params.plan" default="fortnightly">
+<cfparam name="params.plan" default="monthly">
 <cfoutput>
 
 	<div class="row">        	

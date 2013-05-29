@@ -1,7 +1,10 @@
-<!---
-	This is the parent controller file that all your controllers should extend.
-	You can add functions to this file to make them globally available in all your controllers.
-	Do not delete this file.
---->
 <cfcomponent extends="Wheels">
+
+	<cffunction name="loadSubscriberInstance" access="private">
+		
+		<!--- Create a new newsletter subscriber instance --->
+		<cfset data.subscriber = model("newsletter").new()>
+		
+	</cffunction>
+	
 </cfcomponent>
