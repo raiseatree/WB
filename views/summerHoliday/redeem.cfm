@@ -33,10 +33,10 @@
 						</div>
 							
 						<div class="control-group">
-							<label class="control-label" for="inputEmail">Voucher Code:</label>
+							<label class="control-label" for="inputEmail">NEOffers.co.uk Voucher Code:</label>
 							<div class="controls">
 								#textField(objectName="data.redeemer", id="code", property="code", label="", required="true")# 
-								<span class="help-inline">This will be on the confirmation email you received after purchasing.</span>
+								<span class="help-inline">This will be on the confirmation email you received after purchasing from NEOffers.co.uk</span>
 							</div>
 						</div>
     				</div>
