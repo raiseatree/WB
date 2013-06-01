@@ -24,7 +24,7 @@
       t = createTable(name='entrants');
       t.string(columnNames="firstname,surname,email,gender,age", null=false, limit=255);
       t.integer(columnNames="children,grandchildren,niecesnephews", null=false);
-      t.string(columnNames="newsletter", null=false, default=0, limit=1);
+      t.integer(columnNames="newsletter", null=false, limit=1);
       
       t.timestamps();
       t.create();
