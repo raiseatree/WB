@@ -7,8 +7,10 @@
 		
 			<cfcase value="one-off">
 			
-				<!--- ASAP - use day+2 --->
-				<cfreturn '3-4 Working Days'>
+				<!--- Load the current delivery estimate from the db --->
+				<cfset loc.delivery = model("deliveryestimate").findOne(returnAs="query")>
+			
+				<cfreturn loc.delivery.estimate>
 			
 			</cfcase>
 			
@@ -311,11 +313,24 @@
 	
 	<cffunction name="order">
 	
-		<!--- Create new customer and child instance --->
-		<cfif IsDefined("data.promoCodeID")>
-			<cfset data.customer = model("customer").new(promoCodeID=data.promoCodeID)>
+		<!--- Check if we have any details in the session already from a competition entry --->
+		<cfif IsDefined("SESSION.entrant") AND IsObject(SESSION.entrant)>
+		
+			<!--- Create new customer instance --->
+			<cfset data.customer = model("customer").new(firstName=SESSION.entrant.firstname, 
+					surname=SESSION.entrant.surname, 
+					email=SESSION.entrant.email,
+					promoCodeID=SESSION.promoCodeID)>
+		
 		<cfelse>
-			<cfset data.customer = model("customer").new()>
+		
+			<!--- Create new customer instance --->
+			<cfif IsDefined("data.promoCodeID")>
+				<cfset data.customer = model("customer").new(promoCodeID=data.promoCodeID)>
+			<cfelse>
+				<cfset data.customer = model("customer").new()>
+			</cfif>
+		
 		</cfif>
 		
 		<!--- now create the child --->

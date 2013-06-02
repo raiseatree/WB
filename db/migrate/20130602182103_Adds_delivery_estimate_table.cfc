@@ -18,23 +18,18 @@
       t.decimal(columnNames='hourlyWage', default='', null=true, precision='1', scale='2');
       t.date(columnNames='dateOfBirth', default='', null=true);
 --->
-<cfcomponent extends="plugins.dbmigrate.Migration" hint="Adds competition entrant table">
+<cfcomponent extends="plugins.dbmigrate.Migration" hint="Adds delivery estimate table">
   <cffunction name="up">
     <cfscript>
-      t = createTable(name='entrants');
-      t.string(columnNames="firstname,surname,email,gender,age", null=false, limit=255);
-      t.integer(columnNames="children,grandchildren,niecesnephews", null=false);
-      t.integer(columnNames="newsletter", null=false, limit=1);
-      t.integer(columnNames="emailconfirmed", null=false, default=0, limit=1);
+      t = createTable(name='deliveryestimates');
+      t.string(columnNames="estimate");
       
-      t.timestamps();
       t.create();
-      
     </cfscript>
   </cffunction>
   <cffunction name="down">
     <cfscript>
-      dropTable('entrants');
+      dropTable('deliveryestimates');
     </cfscript>
   </cffunction>
 </cfcomponent>

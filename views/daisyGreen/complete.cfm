@@ -3,19 +3,33 @@
 
 	<div class="row">
 		
-		<h2>Woo Hoo! Welcome to <strong>Weekend Box Club</strong>!</h2>
-		<h3>Next Steps:</h3>
+		<h2>Thanks for entering the competition!</h2>
+		<h3>Please check your email and click the link to confirm your entry.</h3>    
+		
+		<hr>
+		
+		<div class="row">
+			<div class="span6">
+            	<h2>SPECIAL OFFER!</h2>
+				<h3>Thank you for entering our competition - order a Weekend Box now for just &pound;5!</h3>
+            	#linkTo(controller="daisyGreen", action="purchase", text="Buy A Weekend Box for &pound;5 &raquo;", params="code=#params.ID#", class="btn btn-success btn-large btn-block", style="color: ##FFF;")#  
+				<h5 class="center-align">Includes FREE Delivery (Saving up to 50%!)</h5>
+			</div>
+			<div class="span6">#imageTag('splash-img.png')#</div>
+		</div>
+		
 		
 		<section class="section-box complete-box shadow">
 		    <div class="container">     	
 		        <div class="row">
-		            <article class="span4 center-align">
+			        
+			        <article class="span4 center-align">
 		            	#imageTag('email.png')#
 		            	<h3>Check your email</h3>
-		            	<p>We've sent you an email with all the important details like when your first box will arrive.</p>
+		            	<p>We've sent you a link you need to click on to confirm your competition entry</p>
 		            </article>
 		            
-		            <article class="span4 center-align">
+		             <article class="span4 center-align">
 			             #linkTo(href="http://www.facebook.com/weekendboxclub", target="_blank", text=imageTag('fb-mid.png'))# 
 			             #linkTo(href="http://www.twitter.com/weekendboxclub", target="_blank", text=imageTag('twitter-mid.png'))# 
 		            	<h3>Join us on #linkTo(href="http://www.facebook.com/weekendboxclub", target="_blank", text="Facebook")# &amp; #linkTo(href="http://www.twitter.com/weekendboxclub", target="_blank", text="Twitter")#</h3>
@@ -32,11 +46,6 @@
 			</div>
 		</section>
 		
-			<!--- 
-				1. Check your email
-				2. Join us on Facebook and Twitter
-				3. Get excited!
-			--->
 	</div>
 
 </cfoutput>
