@@ -28,7 +28,7 @@
 			</div>
 		
 			<div class="row">
-				<p><a href="http://www.weekendboxclub.com/daisy-green/confirm?code=#addEntry.ID#" class="btn btn-success btn-large" style="color: ##FFF;">Confirm Competition Entry &raquo;</a></p>	
+				<p><a href="http://www.weekendboxclub.com/daisygreen/confirm?code=#addEntry.ID#" class="btn btn-success btn-large" style="color: ##FFF;">Confirm Competition Entry &raquo;</a></p>	
 			</div>	
 			
 			<hr>
@@ -42,7 +42,7 @@
 					<div class="span6">
 			            <h5>Order A Weekend Box for Just &pound;5 (normally &pound;10) - includes FREE delivery</h5>
 		            	<p>As a thank you for entering our competition, why not check out one of our boxes for the STUNNING price of &pound;5?</p>
-		            	<a href="http://www.weekendboxclub.com/daisy-green/purchase?code=#addEntry.ID#" class="btn btn-success btn-large" style="color: ##FFF;">Buy Weekend Box for &pound;5 &raquo;</a>
+		            	<a href="http://www.weekendboxclub.com/daisygreen/purchase?code=#addEntry.ID#" class="btn btn-success btn-large" style="color: ##FFF;">Buy Weekend Box for &pound;5 &raquo;</a>
 		            </div>
 	            </article>
 	            

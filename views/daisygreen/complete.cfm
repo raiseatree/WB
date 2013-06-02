@@ -1,4 +1,3 @@
-<cfparam name="data">
 <cfoutput>
 
 	<div class="row">
