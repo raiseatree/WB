@@ -15,17 +15,16 @@
 			<!--- Decrypt the ID --->
 			<cfset loc.ID = decrypt(params.code, GetEncryptKey(),"CFMX_COMPAT","HEX")>
 			
-			<cfdump var="#loc.ID#" label="loc.ID">
-			
 			<!--- Check if that matches a user in the db --->
 			<cfset loc.user = model("entrant").findOneByID(loc.ID)>
-			
-			<cfdump var="#loc.user#" label="loc.user"><cfabort>
 			
 			<cfif IsObject(loc.user)>
 				
 				<!--- Update the user --->
 				<cfset loc.user.update(emailConfirmed=1)>
+				
+				<!--- Redirect the user --->
+				<cfset redirectTo(controller="daisyGreen", action="complete")>
 				
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your code was not found, please click on the link in your email again")>
