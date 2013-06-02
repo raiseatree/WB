@@ -20,7 +20,7 @@
 			<!--- Check if that matches a user in the db --->
 			<cfset loc.user = model("entrant").findOneByID(loc.ID)>
 			
-			<cfdump var="#loc.user#" label="loc.user">
+			<cfdump var="#loc.user#" label="loc.user"><cfabort>
 			
 			<cfif IsObject(loc.user)>
 				
