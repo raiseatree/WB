@@ -26,7 +26,7 @@
 					<span class="muted">per box</span>
 					<cfif IsDefined("data.paypalOneOff") AND data.payPalOneOff EQ ''>
 						<div class="alert alert-error">Option unavailable with this offer</div>
-					<cfelse>
+					<cfelseif IsDefined("data.promoAmount")>
 						<div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div>
 					</cfif>
 					<ul class="unstyled plan-features">
