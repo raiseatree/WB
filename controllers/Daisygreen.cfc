@@ -23,6 +23,13 @@
 				<!--- Update the user --->
 				<cfset loc.user.update(emailConfirmed=1)>
 				
+				<!--- Now send the user a free activity --->
+				<cfset sendEmail(to=loc.user.email, 
+					template="/emails/competitionActivity",
+					from="Weekend Box Club <hello@weekendboxclub.com>", 
+					subject="Weekend Box FREE Activity",
+					user=loc.user, file="Weekend-Box-Patchwork-Letters.pdf")>
+				
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your code was not found, please click on the link in your email again")>
 				<cfset redirectTo(route="home")>
