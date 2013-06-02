@@ -15,8 +15,12 @@
 			<!--- Decrypt the ID --->
 			<cfset loc.ID = decrypt(params.code, GetEncryptKey(),"CFMX_COMPAT","HEX")>
 			
+			<cfdump var="#loc.ID#" label="loc.ID">
+			
 			<!--- Check if that matches a user in the db --->
 			<cfset loc.user = model("entrant").findOneByID(loc.ID)>
+			
+			<cfdump var="#loc.user#" label="loc.user">
 			
 			<cfif IsObject(loc.user)>
 				
@@ -87,7 +91,7 @@
 			</cfif>
 			
 			<!--- Encrypt the userID for using as the confirmation code --->
-			<cfset addEntry.ID = encrypt(addEntry.ID,GetEncryptKey(),"CFMX_COMPAT","Hex")>
+			<cfset addEntry.ID = encrypt(addEntry.ID,GetEncryptKey(),"CFMX_COMPAT","HEX")>
 			
 			<!--- TODO Now mail through the confirmation of entry and the Patchwork Letters activity --->
 			<cfset sendEmail(to=addEntry.email, 
