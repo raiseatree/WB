@@ -23,9 +23,6 @@
 				<!--- Update the user --->
 				<cfset loc.user.update(emailConfirmed=1)>
 				
-				<!--- Redirect the user --->
-				<cfset redirectTo(controller="daisygreen", action="complete")>
-				
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your code was not found, please click on the link in your email again")>
 				<cfset redirectTo(route="home")>
