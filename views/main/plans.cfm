@@ -24,10 +24,14 @@
 					<h5 class="plan-name">One-Off</h5>
 					<h1 class="plan-price">&pound;10</h1>
 					<span class="muted">per box</span>
-					<cfif IsDefined("data.paypalOneOff") AND data.payPalOneOff EQ ''>
+					<cfif IsDefined("data.paypalOneOff")>
+						<cfif data.payPalOneOff EQ ''>
+							<div class="alert alert-error">Option unavailable with this offer</div>
+						<cfelseif IsDefined("data.promoAmount")>
+							<div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div>
+						</cfif>
+					<cfelse>
 						<div class="alert alert-error">Option unavailable with this offer</div>
-					<cfelseif IsDefined("data.promoAmount")>
-						<div class="alert alert-success">Your first box will be &pound#data.promoAmount#</div>
 					</cfif>
 					<ul class="unstyled plan-features">
 						<li>4 Activities (per box)</li>
