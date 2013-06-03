@@ -6,7 +6,14 @@
 	
 	</cffunction>
 	
-	<cffunction name="complete"></cffunction>
+	<cffunction name="complete">
+	
+		<cfif Not(IsDefined("params.ID"))>
+			<cfset flashInsert(error="Sorry - the link you clicked on didn't seem to work, please go back and try again")>
+			<cfset redirectTo(route="home")>
+		</cfif>
+	
+	</cffunction>
 	
 	<cffunction name="confirm">
 	
