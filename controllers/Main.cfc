@@ -83,6 +83,7 @@
 				<!--- Check if the promo code is active and update the customer --->
 				<cfset SESSION.promoCodeID = loc.promo.ID>
 				<cfset data.promoAmount = loc.promo.promoPrice>
+				<cfset data.payPalOneOff = loc.promo.payPalOneOff>
 			<cfelse>
 				<cfset flashInsert(error="Sorry - your promo code #UCase(params.promoCode)# was not found, please check for typos and try again")>
 				<cfset redirectTo(route="home")>

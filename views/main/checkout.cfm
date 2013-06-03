@@ -65,7 +65,7 @@
 						<div class="span7 card-box">
 							<h3>Credit/Debit Card</h3>
 							<p>Our Credit/Debit card payments are handled securely by PayPal. </p>
-							<p><strong>Please Note:</strong> The merchant's name will be displayed as '<strong>RAISE A TREE LTD</strong>'. Click the button below to set up your subscription:</p>
+							<p><strong>Please Note:</strong> The merchant's name will be displayed as '<strong>WEEKENDBOX</strong>'. Click the button below to set up your subscription:</p>
 		
 							<!--- Check if we have a custom (PROMO) PayPal Code --->
 							<cfif IsDefined("data.customer.code") AND data.customer.code GT ''>
