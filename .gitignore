@@ -10,9 +10,6 @@ log/
 # Lib Dir
 lib/
 
-# files directory where uploads go
-files/
-
 # tests directory
 tests/
 
