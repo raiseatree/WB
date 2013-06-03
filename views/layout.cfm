@@ -6,6 +6,7 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Weekend Box - A Fortnightly Box of Healthy Living, Green &amp; Creative Activities for Children Aged 3-8 Delivered to Your Door</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta property="og:image" content="http://www.weekendboxclub.com/images/splash-img.png"/>
 	    #stylesheetLinkTag('bootstrap.min,bootstrap-responsive.min,strip,strip-responsive')#
 	   	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet">
 	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
