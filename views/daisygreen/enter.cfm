@@ -4,6 +4,8 @@
         <header class="highlight span12">
 			<h2>WIN A 3-Month Weekend Box Subscription (Worth &pound;45!)</h2>
             <h3>For little ones aged 3-8, delivered right to your door.</h3>
+			<p>To celebrate the launch of our new boxes, Weekend Box are delighted to offer a 3-Month subscription for ONE lucky entrant <strong>RRP &pound;45.00</strong>. The prize includes SIX Weekend Boxes delivered to your door, each containing four high-quality activities for little ones aged 3-8.</p>
+			<p>With the summer holidays just around the corner, what better way to start them than with a <strong>FREE subscription of Weekend Boxes</strong> to keep you going all summer?</p>
 		</header>
 	</div>
 	
@@ -112,10 +114,18 @@
 										#checkbox(objectName="data.entrant", property="newsletter", id="inputNewsletter", label="")# Join our <strong>Weekly Newsletter?</strong> (activities, competitions and more!)
 									</label>
 								</div>
+								<cfif IsDefined("params.s")>#hiddenFieldTag(name="entrant[source]", value="#params.s#")#</cfif>
 								<button type="submit" class="big-btn">Enter Competition &raquo;</button>
 							</div>
 					
 					#endFormTag()#
+					
+					<h4>Competition Rules</h4>
+					<ul>
+						<li>Closing date: Monday 1st July 12pm (BST)</li>
+						<li>Only ONE entry per person (multiple entries will be discarded)</li>
+						<li>The winner will be contacted by Weekend Box and asked to confirm their postal address and availability for this prize. Once confirmed, we will send the winner's first box within 30 days.</li>
+					</ul>
 					
 				</div>
 				
