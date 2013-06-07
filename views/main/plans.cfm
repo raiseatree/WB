@@ -24,7 +24,7 @@
 					<h5 class="plan-name">One-Off</h5>
 					<h1 class="plan-price">&pound;10</h1>
 					<span class="muted">per box</span>
-					<cfif IsDefined("data.paypalOneOff")>
+					<cfif IsDefined("data.paypalOneOff") AND data.paypalOneOff GT ''>
 						<cfif data.payPalOneOff EQ ''>
 							<div class="alert alert-error">Option unavailable with this offer</div>
 						<cfelseif IsDefined("data.promoAmount")>
