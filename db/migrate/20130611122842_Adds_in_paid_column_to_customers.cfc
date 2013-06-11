@@ -19,11 +19,13 @@
 <cfcomponent extends="plugins.dbmigrate.Migration" hint="Adds in paid column to customers">
   <cffunction name="up">
     <cfscript>
+	    addColumn(table='customers', columnType='string', columnName='county', null=true);
 	    addColumn(table='customers', columnType='integer', columnName='blnpaid', null=true);
     </cfscript>
   </cffunction>
   <cffunction name="down">
     <cfscript>
+		removeColumn(table='customers',columnName='county');
 		removeColumn(table='customers',columnName='blnpaid');
     </cfscript>
   </cffunction>
