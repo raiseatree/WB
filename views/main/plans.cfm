@@ -13,7 +13,7 @@
 			
 				<ul class="nav nav-list">
 					<li class="nav-header">Contact Us</li>
-					<li><a href="##"><i class="icon-bullhorn"></i> +44(0)191 512 0640</a></li>
+					<li><a href="##"><i class="icon-bullhorn"></i> +44(0)191 328 0640</a></li>
 					<li><a href="mailTo:hello@weekendboxclub.com"><i class='icon-envelope'></i> Email Us</a></li>
 				</ul>
 			</aside>
