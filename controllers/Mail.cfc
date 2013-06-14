@@ -30,7 +30,7 @@
 	
 		<cfset sendEmail(to="andy@raiseatree.co.uk", 
 				subject="Your Weekend Box Is On Its Way!", 
-				template="/emails/weekendBoxEnRoute",
+				template="/emails/weekendboxenroute",
 				from="Weekend Box Club <hello@weekendboxclub.com>", 
 				first_name=customers.firstName)>
 		
