@@ -1,10 +1,9 @@
 <cfset set(
     functionName="sendEmail",
-    server="email-smtp.us-east-1.amazonaws.com",
-	port="587",
-	useTLS="true",
-    username="AKIAJ2HFJM4NWVGJ2GYA",
-    password="AtIn1zxZqEvxKte0QsWNwBjr1fkDxPhrpntyBO4IxFJS"
+    server="localhost",
+	port="25",
+    username="webmail",
+    password="raiseatree"
 )>
 
 <cfset set(dataSourceName="weekendbox")>
