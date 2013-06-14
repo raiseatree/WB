@@ -26,8 +26,7 @@
 				from="Weekend Box Club <hello@weekendboxclub.com>", 
 				first_name=customers.firstName)>
 		
-			<cfabort>
-		
+			<cfoutput>Sent to #customers.firstName# #customers.surname# - #customers.email#<br /></cfoutput>
 		</cfloop>
 	
 				
