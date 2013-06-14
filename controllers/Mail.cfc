@@ -20,19 +20,15 @@
 				<p><img src="http://weekendboxclub.com/images/weekend-box-logo-sml.png"/></p>
 			</cfoutput>
 			
-			<!---<cfset sendEmail(to="andy@raiseatree.co.uk", 
-				subject="Your Weekend Box Is On Its Way!", 
-				template="/emails/customerWelcome",
-				from="Weekend Box Club <hello@weekendboxclub.com>", 
-				first_name=customers.firstName)>--->
-		
-		</cfloop>
-	
-		<cfset sendEmail(to="andy@raiseatree.co.uk", 
+			<cfset sendEmail(to="andy@raiseatree.co.uk", 
 				subject="Your Weekend Box Is On Its Way!", 
 				template="/emails/weekendboxenroute",
 				from="Weekend Box Club <hello@weekendboxclub.com>", 
 				first_name=customers.firstName)>
+		
+		</cfloop>
+	
+			
 		
 		<cfabort>
 	
