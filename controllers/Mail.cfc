@@ -20,7 +20,7 @@
 				<p><img src="http://weekendboxclub.com/images/weekend-box-logo-sml.png"/></p>
 			</cfoutput>--->
 			
-			<cfset sendEmail(to="andy@raiseatree.co.uk", 
+			<cfset sendEmail(to=customers.email, 
 				subject="Your Weekend Box Is On Its Way!", 
 				template="/emails/weekendboxenroute",
 				from="Weekend Box Club <hello@weekendboxclub.com>", 
