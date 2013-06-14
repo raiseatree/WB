@@ -26,6 +26,8 @@
 				from="Weekend Box Club <hello@weekendboxclub.com>", 
 				first_name=customers.firstName)>
 		
+			<cfabort>
+		
 		</cfloop>
 	
 				
