@@ -9,7 +9,7 @@
 		<cfloop query="customers">
 		
 			<cfoutput>
-				<p>Dear #customers.firstName#,</p>
+				<p>Dear <span style="text-transform: capitalize;">#customers.firstName#</span>,</p>
 				<p>I just thought I'd drop you a quick email to let you know your first Weekend Box is on its way now and should be with you shortly!</p>
 				<p>Hope you have an excellent time with it and do let me know what you think of it as I'm always looking for feedback to help improve the boxes.</p>
 				<p>Be sure to come and join Weekend Box on <a href="http://www.facebook.com/weekendboxclub">Facebook</a> and <a href="http://www.twitter.com/WeekendBoxClub">Twitter</a> for exclusive content, competitions and much more!</p>
