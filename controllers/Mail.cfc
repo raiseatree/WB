@@ -4,6 +4,7 @@
 	
 	<cffunction name="toandy">
 	
+		<cfabort>
 		<cfset customers = model("customer").findAll(where="blnPaid=1 AND ID >= 67 AND ID <> 109 AND ID <> 111 AND ID <> 102 AND ID <> 123 AND ID <> 137 AND ID <> 158 AND ID <= 192")>
 		
 		<cfloop query="customers">
