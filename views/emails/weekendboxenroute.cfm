@@ -6,6 +6,6 @@
 	<p>All the best,</p>
 	<p>Andy<br />Founder, Weekend Box Club</p>
 	<p>t: 0191 328 0640 / 07545 998856 <br /><a href="http://www.weekendboxclub.com">http://www.weekendboxclub.com</a></p>
-	<p>---<br />Come and join Weekend Box on <strong>Twitter</strong> (@WeekendBoxClub) or <strong>Facebook</strong> (/WeekendBoxClub) for exclusive content, competitions and much more!</p>
+	<p>---<br />Come and join Weekend Box on <strong>Twitter</strong> (<a href="http://twitter.com/WeekendBoxClub">@WeekendBoxClub</a>) or <strong><a href="http://facebook.com/WeekendBoxClub">Facebook</a></strong> (/WeekendBoxClub) for exclusive content, competitions and much more!</p>
 	<p><img src="http://weekendboxclub.com/images/weekend-box-logo-sml.png"/></p>
 </cfoutput>
