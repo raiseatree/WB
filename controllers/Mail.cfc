@@ -2,7 +2,7 @@
 
 	<cffunction name="init"></cffunction>
 	
-	<cffunction name="toandy">
+	<!---<cffunction name="toandy">
 	
 		<cfabort>
 		<cfset customers = model("customer").findAll(where="blnPaid=1 AND ID >= 67 AND ID <> 109 AND ID <> 111 AND ID <> 102 AND ID <> 123 AND ID <> 137 AND ID <> 158 AND ID <= 192")>
@@ -31,6 +31,27 @@
 		</cfloop>
 	
 				
+		
+		<cfabort>
+	
+	</cffunction>--->
+	
+	<cffunction name="questionnaire">
+		
+		<cfset customers = model("customersnetmumsoneoff").findAll()>
+		
+		<cfdump var="#customers#"><cfabort>
+		
+		<cfloop query="customers">
+	
+			<cfset sendEmail(to=customers.email, 
+				subject="Your Weekend Box Is On Its Way!", 
+				template="/emails/subscriptionQuestionnaire",
+				from="Andy Stephenson <andy@weekendboxclub.com>", 
+				first_name=customers.firstName)>
+		
+			<cfoutput>Sent to #customers.firstName# #customers.surname# - #customers.email#<br /></cfoutput>
+		</cfloop>
 		
 		<cfabort>
 	
