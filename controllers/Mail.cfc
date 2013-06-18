@@ -57,5 +57,25 @@
 		<cfabort>
 	
 	</cffunction>
+	
+	<cffunction name="dgquestionnaire">
+		
+		<cfset customers = model("daisygreenentrant").findAll(order="ID ASC")>
+		
+		<cfloop query="customers">
+	
+			<cfset sendEmail(to=customers.email, 
+				subject="Weekend Box Feedback", 
+				template="/emails/dgSubscriptionQuestionnaire",
+				from="Andy Stephenson <andy@weekendboxclub.com>", 
+				first_name=customers.firstName)>
+		
+			<cfoutput>Sent to #customers.firstName# #customers.surname# - #customers.email#<br /></cfoutput>
+			
+		</cfloop>
+		
+		<cfabort>
+	
+	</cffunction>
 
 </cfcomponent>
