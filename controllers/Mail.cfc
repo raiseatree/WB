@@ -60,7 +60,7 @@
 	
 	<cffunction name="dgquestionnaire">
 		
-		<cfset customers = model("daisygreenentrant").findAll(where="ID >= 396", order="ID ASC")>
+		<cfset customers = model("daisygreenentrant").findAll(where="ID > 396", order="ID ASC")>
 		
 		<cfloop query="customers">
 	
