@@ -104,14 +104,12 @@
 			<cfset addEntry.ID = encrypt(addEntry.ID,GetEncryptKey(),"CFMX_COMPAT","HEX")>
 			
 			<!--- Mail through for confirmation of entry --->
-			<cfif findNoCase("8600", CGI.HTTP_HOST) EQ 0>
-				<cfset sendEmail(to=addEntry.email, 
-						template="/emails/competitionConfirmation",
-						from="Weekend Box Club <hello@weekendboxclub.com>", 
-						subject="Thanks for entering the competition - please click below to confirm your entry",
-						userID=addEntry)>
-			</cfif>
-				
+			<cfset sendEmail(to=addEntry.email, 
+					template="/emails/competitionConfirmation",
+					from="Weekend Box Club <hello@weekendboxclub.com>", 
+					subject="Thanks for entering the competition - please click below to confirm your entry",
+					userID=addEntry)>
+			
 			<!--- Flash and forward --->
 			<cfset redirectTo(controller="conquermaths", action="complete", params="ID=#addEntry.ID#")>
 		
