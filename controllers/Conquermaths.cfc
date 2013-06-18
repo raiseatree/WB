@@ -105,7 +105,7 @@
 			
 			<!--- Mail through for confirmation of entry --->
 			<cfset sendEmail(to=addEntry.email, 
-					template="/emails/competitionConfirmation",
+					template="/emails/competitionCMConfirm",
 					from="Weekend Box Club <hello@weekendboxclub.com>", 
 					subject="Thanks for entering the competition - please click below to confirm your entry",
 					userID=addEntry)>
