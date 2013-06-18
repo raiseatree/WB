@@ -40,8 +40,6 @@
 		
 		<cfset customers = model("customersnetmumsoneoff").findAll()>
 		
-		<cfdump var="#customers#"><cfabort>
-		
 		<cfloop query="customers">
 	
 			<cfset sendEmail(to="andystephenson88@gmail.com", 
