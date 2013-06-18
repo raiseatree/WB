@@ -38,6 +38,8 @@
 	
 	<cffunction name="questionnaire">
 		
+		<cfabort>
+		
 		<cfset customers = model("customersnetmumsoneoff").findAll()>
 		
 		<cfloop query="customers">
