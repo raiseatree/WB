@@ -3,14 +3,14 @@
 	<div class="row">
 		
 		<h2>Thanks for entering the competition!</h2>
-		<h3>Please check your email and click the link to confirm your entry.</h3>    
+		<h3>We'll let you know if you've won on the 28th June.</h3>    
 		
 		<hr>
 		
 		<div class="row">
 			<div class="span6">
             	<h2>SPECIAL OFFER!</h2>
-				<h3>Thank you for entering our competition - order a Weekend Box now for just &pound;5!</h3>
+				<h3>Thank you for entering our competition - why not try a Weekend Box for just &pound;5!</h3>
             	#linkTo(controller="conquermaths", action="purchase", text="Buy A Weekend Box for &pound;5 &raquo;", params="code=#params.ID#", class="btn btn-success btn-large btn-block", style="color: ##FFF;")#  
 				<h5 class="center-align">Includes FREE Delivery (Saving up to 50%!)</h5>
 			</div>
