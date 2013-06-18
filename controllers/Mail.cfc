@@ -44,13 +44,16 @@
 		
 		<cfloop query="customers">
 	
-			<cfset sendEmail(to=customers.email, 
-				subject="Your Weekend Box Is On Its Way!", 
+			<cfset sendEmail(to="andystephenson88@gmail.com", 
+				subject="Weekend Box Feedback", 
 				template="/emails/subscriptionQuestionnaire",
 				from="Andy Stephenson <andy@weekendboxclub.com>", 
 				first_name=customers.firstName)>
 		
 			<cfoutput>Sent to #customers.firstName# #customers.surname# - #customers.email#<br /></cfoutput>
+			
+			<cfabort>
+			
 		</cfloop>
 		
 		<cfabort>
