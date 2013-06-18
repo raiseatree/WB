@@ -60,6 +60,8 @@
 	
 	<cffunction name="dgquestionnaire">
 		
+		<cfabort>
+		
 		<cfset customers = model("daisygreenentrant").findAll(where="ID > 396", order="ID ASC")>
 		
 		<cfloop query="customers">
