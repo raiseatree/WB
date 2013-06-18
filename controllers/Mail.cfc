@@ -50,8 +50,6 @@
 		
 			<cfoutput>Sent to #customers.firstName# #customers.surname# - #customers.email#<br /></cfoutput>
 			
-			<cfabort>
-			
 		</cfloop>
 		
 		<cfabort>
