@@ -140,7 +140,7 @@
 										#checkbox(objectName="data.entrant", property="newsletter", id="inputNewsletter", label="")# Join our <strong>Weekly Newsletter?</strong> (activities, competitions and more!)
 									</label>
 								</div>
-								<cfif IsDefined("params.s")>#hiddenField(objectName="data.entrant", property="source")#</cfif>
+								#hiddenField(objectName="data.entrant", property="source")#
 								<button type="submit" class="big-btn">Enter Competition &raquo;</button>
 							</div>
 					
