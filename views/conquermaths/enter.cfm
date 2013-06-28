@@ -148,7 +148,7 @@
 					
 					<h4>Competition Rules</h4>
 					<ul>
-						<li>Closing date: Thursday 27th June 6pm (BST)</li>
+						<li>Closing date: Tuesday 2nd July 6pm (BST)</li>
 						<li>Only ONE entry per person (multiple entries will be discarded)</li>
 						<li>The winner will be contacted by Weekend Box and asked to confirm their postal address and availability for this prize. Once confirmed, we will send the winner's first box within 30 days.</li>
 					</ul>
