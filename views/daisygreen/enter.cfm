@@ -4,12 +4,14 @@
         <header class="highlight span12">
 			<h2>WIN A 3-Month Weekend Box Subscription (Worth &pound;45!)</h2>
             <h3>For little ones aged 3-8, delivered right to your door.</h3>
-			<p>To celebrate the launch of our new boxes, Weekend Box are delighted to offer a 3-Month subscription for ONE lucky entrant <strong>RRP &pound;45.00</strong>. The prize includes SIX Weekend Boxes delivered to your door, each containing four high-quality activities for little ones aged 3-8.</p>
-			<p>With the summer holidays just around the corner, what better way to start them than with a <strong>FREE subscription of Weekend Boxes</strong> to keep you going all summer?</p>
+			<!---<p>To celebrate the launch of our new boxes, Weekend Box are delighted to offer a 3-Month subscription for ONE lucky entrant <strong>RRP &pound;45.00</strong>. The prize includes SIX Weekend Boxes delivered to your door, each containing four high-quality activities for little ones aged 3-8.</p>
+			<p>With the summer holidays just around the corner, what better way to start them than with a <strong>FREE subscription of Weekend Boxes</strong> to keep you going all summer?</p>--->
+			<p>Thanks for your interest in our Daisy Green competition, unfortunately the competition is now closed.</p>
+			<p>#linkTo(route="home", text="Home Page", class="big-btn")#</p>
 		</header>
 	</div>
 	
-	<section class="section-box product-box">
+	<!---<section class="section-box product-box">
 		<div class="container">
 			<div class="row">
 				<div class="span5">
@@ -134,6 +136,6 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>--->
 
 </cfoutput>
