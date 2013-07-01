@@ -2,7 +2,7 @@
 
 	<cffunction name="calcStartDate" access="private">
 		<cfargument name="planname" />
-		
+	
 		<cfswitch expression="#ARGUMENTS.planName#">
 		
 			<cfcase value="one-off">
@@ -17,7 +17,7 @@
 			<!--- Monthly &amp; Quarterly Payments --->
 			<cfdefaultcase>
 			
-				<!--- Work out the day of the month so we can work out if we can ship out boxes this month --->
+				<!--- Work out the day of the month so we can work out if we can ship out boxes this month 
 				<cfset dom = DateFormat(now(),"dd")>
 				
 				<!--- If GTE than 15 we delay until next month --->
@@ -40,9 +40,10 @@
 					</cfif>
 					
 					<cfset startDate = DateFormat(DateAdd("d", startInc, now()), 'yyyy-mm-dd')>
-				</cfif>
+				</cfif>--->
 				
-				<cfreturn DateFormat(startDate, 'yyyy-mm-dd')>
+				<!--- Now we bill and ship straight away --->
+				<cfreturn DateFormat(DateAdd("d",1,now()), 'yyyy-mm-dd')>
 				
 			</cfdefaultcase>
 			
@@ -185,18 +186,13 @@
 							<cfset data.plan_interval_frequency = 1>
 							<cfset data.plan_amount = 15>
 						</cfdefaultcase>
-						<!---<cfdefaultcase>
-							<cfset data.plan_interval = 'week'>
-							<cfset data.plan_interval_frequency = 2>
-							<cfset data.plan_amount = 8>
-						</cfdefaultcase>--->
 					</cfswitch>
 					
 					<!--- Check if we can use Direct Debit --->
 					<cfif data.directDebit EQ true>
 					
 						<!--- Bodge together our variables (Inc USER DATA) --->
-						<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Bstart_at%5D=#SESSION.start_at#&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
+						<cfset sigTemp = 'client_id=#loc.client_id#&nonce=#loc.nonce#&subscription%5Bamount%5D=#data.plan_amount#&subscription%5Bdescription%5D=A%20fortnightly%20box%20of%20healthy%2C%20creative%20and%20green%20activities%20delivered%20to%20your%20door&subscription%5Binterval_length%5D=#data.plan_interval_frequency#&subscription%5Binterval_unit%5D=#data.plan_interval#&subscription%5Bmerchant_id%5D=#loc.merchant_id#&subscription%5Bname%5D=Weekend%20Box%20Subscription&subscription%5Buser%5D%5Bbilling_address1%5D=#URLEncodedFormat(data.customer.address)#&subscription%5Buser%5D%5Bbilling_address2%5D=#URLEncodedFormat(data.customer.address2)#&subscription%5Buser%5D%5Bbilling_postcode%5D=#URLEncodedFormat(data.customer.postcode)#&subscription%5Buser%5D%5Bbilling_town%5D=#URLEncodedFormat(data.customer.city)#&subscription%5Buser%5D%5Bfirst_name%5D=#URLEncodedFormat(data.customer.firstname)#&subscription%5Buser%5D%5Blast_name%5D=#URLEncodedFormat(data.customer.surname)#&timestamp=#replaceList(loc.timestamp, " ,:", "%20,%3A")#'>
 							
 						<!--- Encrypt the signature --->
 						<cfset signature = sha256( sigTemp, GetGoCardless('app_secret') )>
@@ -366,6 +362,10 @@
 			<cfif data.customer.hasErrors()>
 				<cfdump var="#data.customer.allErrors()#"><cfabort>
 			<cfelse>
+			
+				<!--- Set up the order instance too 
+				<cfset order = model("order").create(customerID=data.customer.ID, orderStateID=1, orderPlaced=now())>--->
+				
 				<!--- Add the customer id to the child --->
 				<cfset params.child.customerID = data.customer.ID>
 				
