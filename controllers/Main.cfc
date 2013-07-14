@@ -79,10 +79,17 @@
 			<cfset loc.promo = model("promocode").findAll(where="code='#params.promoCode#'")>
 			
 			<cfif loc.promo.RecordCount EQ 1>
+				
+				<!--- Set the session stuff --->
+				<cfset SESSION.promoCodeID = loc.promo.ID>
 				<cfset flashInsert(success="<strong>Promo Code:</strong> Your promo code was found and applied successfully! <br />#loc.promo.message#")>
 				
+				<!--- Check if the promo code is just for a summer holiday promotion --->
+				<cfif IsDefined("loc.promo.blnSummerHoliday") AND loc.promo.blnSummerHoliday EQ 1>
+					<cfset redirectTo(controller="summerholiday", action="order")>
+				</cfif>
+				
 				<!--- Check if the promo code is active and update the customer --->
-				<cfset SESSION.promoCodeID = loc.promo.ID>
 				<cfset data.promoAmount = loc.promo.promoPrice>
 				<cfset data.payPalOneOff = loc.promo.payPalOneOff>
 			<cfelse>
@@ -388,4 +395,33 @@
 		
 	</cffunction>
 
+	<cffunction name="stripe">
+	
+		<!--- Load the Strip Public Key --->
+		<cfset publicKey = GetStripe('publicKey')>
+		
+	</cffunction>
+
+	<cffunction name="stripeProcess">
+	
+		<cfdump var="#params#">
+		
+		<!--- Make the API Call to Stripe to add the customer and link their card details --->
+		<cfhttp url="https://api.stripe.com/v1/customers" 
+				result="confirm_result" 
+				method="POST" username="#GetStripe('secretKey')#:">
+				
+			<cfhttpparam type="url" name="card" value="#params.stripeToken#">
+			<cfhttpparam type="url" name="email" value="#params.email#">
+			<cfhttpparam type="url" name="plan" value="WBMonthlyTwo">
+
+		</cfhttp>
+		
+		<cfdump var="#confirm_result#">
+		
+		<cfabort>
+	
+	
+	</cffunction>
+	
 </cfcomponent>	

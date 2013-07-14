@@ -86,7 +86,7 @@
 											</select> </td></tr>
 											</table>
 											<input type="hidden" name="currency_code" value="GBP">
-											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 											<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 										</form>
 									</cfif>
@@ -94,21 +94,21 @@
 									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 										<input type="hidden" name="cmd" value="_s-xclick">
 										<input type="hidden" name="hosted_button_id" value="#data.customer.paypalcodemonthly#">
-										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 										<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 									</form>
 								<cfelse>
 									<!---<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 										<input type="hidden" name="cmd" value="_s-xclick">
 										<input type="hidden" name="hosted_button_id" value="#data.customer.paypalcodefortnightly#">
-										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 										<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 									</form>--->
 									<!--- Quarterly with discount --->
 									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 										<input type="hidden" name="cmd" value="_s-xclick">
 										<input type="hidden" name="hosted_button_id" value="#data.customer.paypalcodequarterly#">
-										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+										<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 										<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 									</form>
 								</cfif>
@@ -130,7 +130,7 @@
 											</select> </td></tr>
 											</table>
 											<input type="hidden" name="currency_code" value="GBP">
-											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 											<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 										</form>
 									</cfcase>
@@ -139,7 +139,7 @@
 										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 											<input type="hidden" name="cmd" value="_s-xclick">
 											<input type="hidden" name="hosted_button_id" value="V35MH3KBAF92L">
-											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 											<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 										</form>
 									</cfcase>--->
@@ -148,7 +148,7 @@
 										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 											<input type="hidden" name="cmd" value="_s-xclick">
 											<input type="hidden" name="hosted_button_id" value="F24N85VWWS94W">
-											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 											<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 										</form>
 									</cfcase>
@@ -157,7 +157,7 @@
 										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 											<input type="hidden" name="cmd" value="_s-xclick">
 											<input type="hidden" name="hosted_button_id" value="T4JXRQAWMLRVE">
-											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal Ð The safer, easier way to pay online.">
+											<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 											<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 										</form>
 									</cfcase>
@@ -168,6 +168,7 @@
 		
 						</div>
 					</div>
+					
 				</div>
 			</div>
 			

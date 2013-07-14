@@ -33,15 +33,16 @@
 							<p><a href="##newsletter" role="button", class="btn btn-info", style="color:##FFF" data-toggle="modal">Join our Weekly Newsletter &raquo;</a></p>
 						</div>
 						
-		                <ul class="nav pull-right">
-		                    <li>#linkTo(route="home", text="Home")#</li>
-		                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
-		                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
-		                    <li>#linkTo(controller="main", action="exampleBox", text="Example Box")#</li>
-		                    <li class="active">#linkTo(controller="main", action="plans", text="Join The Club!")#</li>
-		                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
-		                </ul>
-
+						<cfif IsDefined("params.controller") AND params.controller NEQ 'Summer'>
+			                <ul class="nav pull-right">
+			                    <li>#linkTo(route="home", text="Home")#</li>
+			                    <!---<li>#linkTo(href="http://BLOG_URL_HERE", text="Blog")#</li>--->
+			                    <!---<li>#linkTo(controller="main", action="joinUs", text="Join Us!")#</li>--->
+			                    <li>#linkTo(controller="main", action="exampleBox", text="Example Box")#</li>
+			                    <li class="active">#linkTo(controller="main", action="plans", text="Join The Club!")#</li>
+			                    <li>#mailTo(emailAddress='hello@weekendboxclub.com', name="Contact")#</li>
+			                </ul>
+						</cfif>
 		            </div>
 		        </div>
 		    </nav>
@@ -141,8 +142,10 @@
 		</script>
 		
 		<!--- Add This --->
-		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : true};</script>
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js##pubid=ra-518d665a23c7538c"></script>
+		<cfif get('environment') EQ 'production'>
+			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_use_css" : true};</script>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js##pubid=ra-518d665a23c7538c"></script>
+		</cfif>
 		
 	</body>
 </html>

@@ -1,3 +1,5 @@
+<cfparam name="customer">
+
 <cfoutput>
 <!DOCTYPE HTML>
 <html>
@@ -22,8 +24,8 @@
 		
 			<div class="row">
 		        <header class="highlight span12">
-		            <h2>Welcome to Weekend Box, #redeemer.firstName#!</h2>
-		            <h3>We've received your order and are preparing your Summer Holiday Box now.</h3>               
+		            <h2>Welcome to Weekend Box, #customer.firstName#!</h2>
+		            <h3>We've received your order and are preparing your first box now.</h3>               
 				</header>
 			</div>
 		
@@ -37,7 +39,7 @@
 			            <img src="http://www.weekendboxclub.com/images/red-box.png" class="pull-left span3">
 			            <div class="span4">
 			            	<h5>Invite your friends</h5>
-			            	<p>For <strong>every friend</strong> you refer, we'll donate an Activity Kit to our <a href="http://www.weekendboxclub.com/main/about##christmas">Christmas Box Appeal</a></p>
+			            	<p>For <strong>every friend</strong> you refer, we'll send you an extra Craft Kit in your next box <strong>or</strong> you can donate the Craft Kit to our <a href="http://www.weekendboxclub.com/main/about##christmas">Christmas Box Appeal</a></p>
 			            	<p><strong>Forward this email to them and remind them to mention your name when signing up.</strong></p>
 			            </div>
 		            </article>
@@ -62,8 +64,8 @@
 		            <article class="clearfix">
 			            <img src="http://www.weekendboxclub.com/images/andy-stephenson.jpg" class="img-circle pull-left span3" />
 			            <div class="span4">
-				            <h5>Let me know what you think</h5>
-			            	<p>I'm always looking for ways to improve your Weekend Boxes - feel free to drop me a line if you have any feedback or ideas you'd like to see.</p>
+				            <h5>Let us know what you think</h5>
+			            	<p>We're always looking for ways to improve Weekend Boxes - feel free to drop us a line if you have any feedback or ideas you'd like to see.</p>
 			            	<p>You can reply directly to this email, Tweet us (<a href="http://www.twitter.com/weekendboxclub">@WeekendBoxClub</a>) or send us a message through Facebook (<a href="http://www.facebook.com/weekendboxclub">/WeekendBoxClub</a>).</p>
 			            	<p>Cheers, Andy </p>
 			            	<p><strong>Founder, Weekend Box Club</strong></p>
@@ -73,15 +75,12 @@
 				</div>
 				
 				<aside class="span4">
-
 					<div class="alert alert-success">
-						<p><strong>Voucher Code</strong></p>
-						<p>#redeemer.code#</p>
-						<p><strong>Box Arrival Date (Estimate)</strong></p>
-						<p><i class="icon-calendar"></i> #DateFormat(start_at, "dddd dd mmmm yyyy")#</p>
+						<p><strong>First Box Arrival Date (Estimate)</strong></p>
+						<p><i class="icon-calendar"></i> Monday 22nd July 2013</p>
 						<br />
 						<p><strong>Delivery Details</strong></p>
-						<p><strong>#child.name#</strong><br />#redeemer.address#<br /><cfif redeemer.address2 GT ''>#redeemer.address2#<br /></cfif>#redeemer.city#<br />#redeemer.postcode#</p>
+						<p>#child.name#<br />#customer.address#<br /><cfif customer.address2 GT ''>#customer.address2#<br /></cfif>#customer.city#<br />#customer.postcode#</p>
 				
 					</div>
 				
@@ -91,6 +90,14 @@
 						<p><strong>Email:</strong> Just hit Reply!</p>
 					</div>
 				</aside>
+			
+			</div>
+			
+			<div class="row">
+			
+				<hr>
+				<h4>Frequently Asked Questions</h4>
+				#includePartial('/main/faqs')#
 			
 			</div>
 		

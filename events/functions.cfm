@@ -59,3 +59,33 @@
 	</cfswitch>
 
 </cffunction>
+
+<cffunction name="GetStripe" hint="I return various variables, depending on whether we're in a test or production environment">
+	<cfargument name="variable" type="string" hint="The variable to return">
+	
+	<!--- 
+		Variables are split down by ones that change between Sandbox (Dev) and Live (Prod) environments 
+	--->
+	<cfswitch expression="#ARGUMENTS.variable#">
+	
+		<!--- Public Key --->
+		<cfcase value="publicKey">
+			<cfif get("environment") EQ 'Production'>
+				<cfreturn 'pk_live_XW4bkUvTaYUS0PeZ8fBV213Y'>
+			<cfelse>
+				<cfreturn 'pk_test_A5KeTPJqhXtTdQbWDM7WGTFJ'>
+			</cfif>
+		</cfcase>
+		
+		<!--- Secret Key --->
+		<cfcase value="secretKey">
+			<cfif get("environment") EQ 'Production'>
+				<cfreturn 'sk_live_N5Um2pC5HdX6GJXPnNmh1x9h'>
+			<cfelse>
+				<cfreturn 'sk_test_FEZzrTUz28tuBt3ogatuzYLk'>
+			</cfif>
+		</cfcase>
+	
+	</cfswitch>
+	
+</cffunction>
