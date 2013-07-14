@@ -6,10 +6,10 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Weekend Box - A Fortnightly Box of Healthy Living, Green &amp; Creative Activities for Children Aged 3-8 Delivered to Your Door</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta property="og:image" content="http://www.weekendboxclub.com/images/splash-img.png"/>
+	    <meta property="og:image" content="https://www.weekendboxclub.com/images/splash-img.png"/>
 	    #stylesheetLinkTag('bootstrap.min,bootstrap-responsive.min,strip,strip-responsive')#
-	   	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet">
-	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+	   	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet">
+	    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
 	    
 	    <!--- Plans Styles --->
 	    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -123,7 +123,7 @@
 		#googleAnalyticsTag()#
 		
 		<!-- UserVoice JavaScript SDK (only needed once on a page) -->
-		<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='http://widget.uservoice.com/Ifme2BWSqMrgntr1C864A.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+		<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='https://widget.uservoice.com/Ifme2BWSqMrgntr1C864A.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 		
 		<!-- A tab to launch the Classic Widget -->
 		<script>
