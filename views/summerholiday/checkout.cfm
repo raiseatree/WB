@@ -182,7 +182,7 @@
 			
 			// Add in the free tshirt for promo orders
 			<cfif IsDefined("data.offer") AND data.offer EQ true>
-				var item = 'FREE Weekend Box T-Shirt (Specify size required in notes field above)';
+				var item = 'FREE Weekend Box T-Shirt (Specify size - ie 3-4 Years - required in notes field above)';
 				updateBasket(item, 0.00);
 				
 				// Update the form quantity hidden field
